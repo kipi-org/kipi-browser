@@ -31,11 +31,11 @@ exports.defineAutoTests = function () {
         platformOpts = platformOpts || '';
 
         describe('cordova.KipiBrowser', function () {
-            it('inappbrowser.spec.1 should exist', function () {
+            it('kipibrowser.spec.1 should exist', function () {
                 expect(cordova.KipiBrowser).toBeDefined();
             });
 
-            it('inappbrowser.spec.2 should contain open function', function () {
+            it('kipibrowser.spec.2 should contain open function', function () {
                 expect(cordova.KipiBrowser.open).toBeDefined();
                 expect(cordova.KipiBrowser.open).toEqual(jasmine.any(Function));
             });
@@ -89,7 +89,7 @@ exports.defineAutoTests = function () {
                 expect(evt.message).toEqual(jasmine.any(String));
             }
 
-            it('inappbrowser.spec.3 should return KipiBrowser instance with required methods', function () {
+            it('kipibrowser.spec.3 should return KipiBrowser instance with required methods', function () {
                 iabInstance = cordova.KipiBrowser.open(url, '_blank', platformOpts);
 
                 expect(iabInstance).toBeDefined();
@@ -103,7 +103,7 @@ exports.defineAutoTests = function () {
                 expect(iabInstance.insertCSS).toEqual(jasmine.any(Function));
             });
 
-            it('inappbrowser.spec.4 should support loadstart and loadstop events', function (done) {
+            it('kipibrowser.spec.4 should support loadstart and loadstop events', function (done) {
                 const onLoadStart = jasmine.createSpy('loadstart event callback').and.callFake(function (evt) {
                     verifyEvent(evt, 'loadstart');
                 });
@@ -121,7 +121,7 @@ exports.defineAutoTests = function () {
                 });
             });
 
-            it('inappbrowser.spec.5 should support exit event', function (done) {
+            it('kipibrowser.spec.5 should support exit event', function (done) {
                 iabInstance = cordova.KipiBrowser.open(url, '_blank', platformOpts);
                 iabInstance.addEventListener('exit', function (evt) {
                     verifyEvent(evt, 'exit');
@@ -133,7 +133,7 @@ exports.defineAutoTests = function () {
                 });
             });
 
-            it('inappbrowser.spec.6 should support loaderror event', function (done) {
+            it('kipibrowser.spec.6 should support loaderror event', function (done) {
                 if (isBrowser) {
                     // according to documentation, "loaderror" event is not supported on browser
                     // https://github.com/apache/cordova-plugin-kipibrowser#browser-quirks-1
@@ -146,7 +146,7 @@ exports.defineAutoTests = function () {
                 });
             });
 
-            it('inappbrowser.spec.7 should support message event', function (done) {
+            it('kipibrowser.spec.7 should support message event', function (done) {
                 if (!isAndroid && !isIos) {
                     return pending(cordova.platformId + " platform doesn't support message event");
                 }

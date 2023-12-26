@@ -16,7 +16,7 @@
        specific language governing permissions and limitations
        under the License.
 */
-package org.apache.cordova.inappbrowser;
+package org.apache.cordova.kipibrowser;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;

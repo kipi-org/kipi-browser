@@ -17,7 +17,7 @@
     "in",
     "app",
     "browser",
-    "inappbrowser",
+    "kipibrowser",
     "ecosystem:cordova",
     "cordova-android",
     "cordova-browser",

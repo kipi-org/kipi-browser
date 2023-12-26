@@ -25,7 +25,7 @@
     <name>KipiBrowser</name>
     <description>Cordova KipiBrowser Plugin</description>
     <license>Apache 2.0</license>
-    <keywords>cordova,in,app,browser,inappbrowser</keywords>
+    <keywords>cordova,in,app,browser,kipibrowser</keywords>
     <repo>https://github.com/apache/cordova-plugin-kipibrowser</repo>
     <issue>https://github.com/apache/cordova-plugin-kipibrowser/issues</issue>
 
@@ -37,18 +37,18 @@
 
     <!-- android -->
     <platform name="android">
-        <js-module src="www/inappbrowser.js" name="inappbrowser">
+        <js-module src="www/kipibrowser.js" name="kipibrowser">
             <clobbers target="cordova.KipiBrowser.open" />
         </js-module>
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="KipiBrowser">
-                <param name="android-package" value="org.apache.cordova.inappbrowser.KipiBrowser"/>
+                <param name="android-package" value="org.apache.cordova.kipibrowser.KipiBrowser"/>
             </feature>
         </config-file>
 
-        <source-file src="src/android/KipiBrowser.java" target-dir="src/org/apache/cordova/inappbrowser" />
-        <source-file src="src/android/KipiBrowserDialog.java" target-dir="src/org/apache/cordova/inappbrowser" />
-        <source-file src="src/android/InAppChromeClient.java" target-dir="src/org/apache/cordova/inappbrowser" />
+        <source-file src="src/android/KipiBrowser.java" target-dir="src/org/apache/cordova/kipibrowser" />
+        <source-file src="src/android/KipiBrowserDialog.java" target-dir="src/org/apache/cordova/kipibrowser" />
+        <source-file src="src/android/InAppChromeClient.java" target-dir="src/org/apache/cordova/kipibrowser" />
 
         <!-- drawable src/android/resources -->
         <resource-file src="src/android/res/drawable-hdpi/ic_action_next_item.png" target="res/drawable-hdpi/ic_action_next_item.png" />
@@ -70,7 +70,7 @@
 
     <!-- ios -->
     <platform name="ios">
-        <js-module src="www/inappbrowser.js" name="inappbrowser">
+        <js-module src="www/kipibrowser.js" name="kipibrowser">
             <clobbers target="cordova.KipiBrowser.open" />
         </js-module>
         <config-file target="config.xml" parent="/*">
@@ -93,7 +93,7 @@
 
     <!-- browser -->
     <platform name="browser">
-        <js-module src="www/inappbrowser.js" name="inappbrowser">
+        <js-module src="www/kipibrowser.js" name="kipibrowser">
             <clobbers target="cordova.KipiBrowser.open" />
         </js-module>
         <js-module src="src/browser/KipiBrowserProxy.js" name="KipiBrowserProxy">

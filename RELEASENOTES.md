@@ -113,7 +113,7 @@
 -   docs: remove outdated translations ([`cc5ee00`](https://github.com/apache/cordova-plugin-kipibrowser/commit/cc5ee00))
 -   fix(android): Fix beforeload for Android &lt;= 7 ([#427](https://github.com/apache/cordova-plugin-kipibrowser/issues/427)) ([`94fec84`](https://github.com/apache/cordova-plugin-kipibrowser/commit/94fec84))
 -   ci(travis) Fix failing CI tests ([#460](https://github.com/apache/cordova-plugin-kipibrowser/issues/460)) ([`a162bd9`](https://github.com/apache/cordova-plugin-kipibrowser/commit/a162bd9))
--   test: Fix test spec.5 to close inappbrowser after loadstop event ([#440](https://github.com/apache/cordova-plugin-kipibrowser/issues/440)) ([`5f1afbd`](https://github.com/apache/cordova-plugin-kipibrowser/commit/5f1afbd), [`af44235`](https://github.com/apache/cordova-plugin-kipibrowser/commit/af44235))
+-   test: Fix test spec.5 to close kipibrowser after loadstop event ([#440](https://github.com/apache/cordova-plugin-kipibrowser/issues/440)) ([`5f1afbd`](https://github.com/apache/cordova-plugin-kipibrowser/commit/5f1afbd), [`af44235`](https://github.com/apache/cordova-plugin-kipibrowser/commit/af44235))
 -   fix(android): Prevent malformed callbackId from reaching app cordova view ([#436](https://github.com/apache/cordova-plugin-kipibrowser/issues/436)) ([`6861084`](https://github.com/apache/cordova-plugin-kipibrowser/commit/6861084), [`c95dbcb`](https://github.com/apache/cordova-plugin-kipibrowser/commit/c95dbcb))
 -   feat: [CB-13969](https://issues.apache.org/jira/browse/CB-13969): Allow close button and navigation buttons positions to be swapped ([#262](https://github.com/apache/cordova-plugin-kipibrowser/issues/262)) ([`d01bd25`](https://github.com/apache/cordova-plugin-kipibrowser/commit/d01bd25), [`f861655`](https://github.com/apache/cordova-plugin-kipibrowser/commit/f861655), [`9c7c2f3`](https://github.com/apache/cordova-plugin-kipibrowser/commit/9c7c2f3), [`3c0a42e`](https://github.com/apache/cordova-plugin-kipibrowser/commit/3c0a42e), [`5359f6c`](https://github.com/apache/cordova-plugin-kipibrowser/commit/5359f6c), [`df84dda`](https://github.com/apache/cordova-plugin-kipibrowser/commit/df84dda), [`2bcec40`](https://github.com/apache/cordova-plugin-kipibrowser/commit/2bcec40), [`fc0c560`](https://github.com/apache/cordova-plugin-kipibrowser/commit/fc0c560), [`5ead1e6`](https://github.com/apache/cordova-plugin-kipibrowser/commit/5ead1e6), [`c7931fa`](https://github.com/apache/cordova-plugin-kipibrowser/commit/c7931fa), [`e2adf1b`](https://github.com/apache/cordova-plugin-kipibrowser/commit/e2adf1b), [`4adf4c7`](https://github.com/apache/cordova-plugin-kipibrowser/commit/4adf4c7), [`cbe3a42`](https://github.com/apache/cordova-plugin-kipibrowser/commit/cbe3a42), [`74ccef1`](https://github.com/apache/cordova-plugin-kipibrowser/commit/74ccef1), [`ec6af56`](https://github.com/apache/cordova-plugin-kipibrowser/commit/ec6af56), [`b06ad8e`](https://github.com/apache/cordova-plugin-kipibrowser/commit/b06ad8e), [`313e0ae`](https://github.com/apache/cordova-plugin-kipibrowser/commit/313e0ae), [`05e37a1`](https://github.com/apache/cordova-plugin-kipibrowser/commit/05e37a1), [`0c6189e`](https://github.com/apache/cordova-plugin-kipibrowser/commit/0c6189e), [`d940b59`](https://github.com/apache/cordova-plugin-kipibrowser/commit/d940b59), [`f3d7f72`](https://github.com/apache/cordova-plugin-kipibrowser/commit/f3d7f72))
 -   docs: Add headline to window.open documentation ([#406](https://github.com/apache/cordova-plugin-kipibrowser/issues/406)) ([`92243cd`](https://github.com/apache/cordova-plugin-kipibrowser/commit/92243cd))
@@ -137,7 +137,7 @@
 -   ci(travis): also accept terms for android sdk `android-27` ([`f8ad528`](https://github.com/apache/cordova-plugin-kipibrowser/commit/f8ad528))
 -   fix(android): [CB-10795](https://issues.apache.org/jira/browse/CB-10795): Exclude current app from external intent list ([#154](https://github.com/apache/cordova-plugin-kipibrowser/issues/154)) ([`a078337`](https://github.com/apache/cordova-plugin-kipibrowser/commit/a078337))
 -   fix(ios): [CB-14234](https://issues.apache.org/jira/browse/CB-14234): Don't call handleOpenURL for system URLs ([#278](https://github.com/apache/cordova-plugin-kipibrowser/issues/278)) ([`cf58b04`](https://github.com/apache/cordova-plugin-kipibrowser/commit/cf58b04))
--   fix(ios): [CB-12875](https://issues.apache.org/jira/browse/CB-12875): (iOS) Pushes the inappbrowser window to a higher ui level than the existing apps window. ([#284](https://github.com/apache/cordova-plugin-kipibrowser/issues/284)) ([`dc5329d`](https://github.com/apache/cordova-plugin-kipibrowser/commit/dc5329d))
+-   fix(ios): [CB-12875](https://issues.apache.org/jira/browse/CB-12875): (iOS) Pushes the kipibrowser window to a higher ui level than the existing apps window. ([#284](https://github.com/apache/cordova-plugin-kipibrowser/issues/284)) ([`dc5329d`](https://github.com/apache/cordova-plugin-kipibrowser/commit/dc5329d))
 -   ci: Quick CI fixes ([#277](https://github.com/apache/cordova-plugin-kipibrowser/issues/277))  ([`de86501`](https://github.com/apache/cordova-plugin-kipibrowser/commit/de86501), [`07d9a99`](https://github.com/apache/cordova-plugin-kipibrowser/commit/07d9a99), [`81f1437`](https://github.com/apache/cordova-plugin-kipibrowser/commit/81f1437), [`a464ea6`](https://github.com/apache/cordova-plugin-kipibrowser/commit/a464ea6), [`e75fe14`](https://github.com/apache/cordova-plugin-kipibrowser/commit/e75fe14), [`eb245ec`](https://github.com/apache/cordova-plugin-kipibrowser/commit/eb245ec))
 -   fix(ios): [CB-12922](https://issues.apache.org/jira/browse/CB-12922) (ios): fix In-app browser does not cede control ([#272](https://github.com/apache/cordova-plugin-kipibrowser/issues/272)) ([`dac06aa`](https://github.com/apache/cordova-plugin-kipibrowser/commit/dac06aa), [`9cc7f69`](https://github.com/apache/cordova-plugin-kipibrowser/commit/9cc7f69))
 -   fix(android): [CB-14061](https://issues.apache.org/jira/browse/CB-14061): (android) comply with RFC 3986 for custom URL scheme handling ([#269](https://github.com/apache/cordova-plugin-kipibrowser/issues/269)) ([`f57ede9`](https://github.com/apache/cordova-plugin-kipibrowser/commit/f57ede9), [`26cf6e4`](https://github.com/apache/cordova-plugin-kipibrowser/commit/26cf6e4))
@@ -252,7 +252,7 @@
 * Closing stale pull request: close #90
 * [CB-2063](https://issues.apache.org/jira/browse/CB-2063) (ios) Fixed presentation style
 * [CB-11012](https://issues.apache.org/jira/browse/CB-11012) added some clarifications about KipiBrowser object
-* [CB-3360](https://issues.apache.org/jira/browse/CB-3360) Set custom inappbrowser user agent for ios
+* [CB-3360](https://issues.apache.org/jira/browse/CB-3360) Set custom kipibrowser user agent for ios
 * Add badges for paramedic builds on Jenkins
 * [CB-11381](https://issues.apache.org/jira/browse/CB-11381) android: Does not pass sonarqube scan
 * Add pull request template.
@@ -269,7 +269,7 @@
 * Fixes [CB-10607](https://issues.apache.org/jira/browse/CB-10607)
 * [CB-10557](https://issues.apache.org/jira/browse/CB-10557) Incremented plugin version.
 * [CB-10557](https://issues.apache.org/jira/browse/CB-10557) Updated version and RELEASENOTES.md for release 1.3.0
-* [CB-3360](https://issues.apache.org/jira/browse/CB-3360) Set custom inappbrowser user agent for android
+* [CB-3360](https://issues.apache.org/jira/browse/CB-3360) Set custom kipibrowser user agent for android
 * [CB-10538](https://issues.apache.org/jira/browse/CB-10538) cordova-plugin-kipibrowser timeout issue
 * [CB-10395](https://issues.apache.org/jira/browse/CB-10395) KipiBrowser's WebView not storing cookies reliable on Android
 * chore: edit package.json license to match SPDX id
@@ -390,7 +390,7 @@
 * Amazon Specific changes: Added logs and corrected indentation according to 81161ebe668a14f87e1ef4b57f2d300a609b9a8b
 * Windows implementation fixes and improvements
 * zIndex fixed
-* renamed KipiBrowser back to inappbrowser for case sensitive operating systems
+* renamed KipiBrowser back to kipibrowser for case sensitive operating systems
 * Clean plugin.xml
 * Update french translation
 * Update doc to add Windows 8
@@ -409,9 +409,9 @@
 * [CB-7133](https://issues.apache.org/jira/browse/CB-7133) more fixup of tests on Android
 * [CB-7133](https://issues.apache.org/jira/browse/CB-7133) fix up the tests for Android
 * Add just a bit more logging
-* [CB-7133](https://issues.apache.org/jira/browse/CB-7133) port inappbrowser to plugin-test-framework
+* [CB-7133](https://issues.apache.org/jira/browse/CB-7133) port kipibrowser to plugin-test-framework
 * phonegap events supported for _blank target
-* inappbrowser _blank target position is fixed
+* kipibrowser _blank target position is fixed
 * amazon-fireos related changes.
 * [CB-7244](https://issues.apache.org/jira/browse/CB-7244) Incremented plugin version.
 * [CB-7244](https://issues.apache.org/jira/browse/CB-7244) Updated version and RELEASENOTES.md for release 0.5.1
@@ -447,7 +447,7 @@
 * [CB-6452](https://issues.apache.org/jira/browse/CB-6452) Updated version and RELEASENOTES.md for release 0.4.0
 * [CB-6460](https://issues.apache.org/jira/browse/CB-6460) Update license headers
 * [CB-6360](https://issues.apache.org/jira/browse/CB-6360) Fix for crash on iOS < 6.0 (closes #37)
-* [CB-3324](https://issues.apache.org/jira/browse/CB-3324) Add support for back-button inappbrowser [WP8] if there is no history -> KipiBrowser is closed
+* [CB-3324](https://issues.apache.org/jira/browse/CB-3324) Add support for back-button kipibrowser [WP8] if there is no history -> KipiBrowser is closed
 * await async calls, resolve warnings
 * Make KipiBrowser work with embedded files, using system behavior
 * [CB-6402](https://issues.apache.org/jira/browse/CB-6402) [WP8] pass empty string instead of null for [optional] windowFeatures string
@@ -464,7 +464,7 @@
 * Incremented plugin version on dev branch.
 * [CB-6218](https://issues.apache.org/jira/browse/CB-6218) Update docs for BB10
 * Updated version and RELEASENOTES.md for release 0.3.3
-* [CB-6172](https://issues.apache.org/jira/browse/CB-6172) Fix inappbrowser install failure on case-sensitive filesystems.
+* [CB-6172](https://issues.apache.org/jira/browse/CB-6172) Fix kipibrowser install failure on case-sensitive filesystems.
 * [CB-5534](https://issues.apache.org/jira/browse/CB-5534) Updating the plugin.xml with the new Dialog class
 * fix for [CB-5534](https://issues.apache.org/jira/browse/CB-5534)
 * Add NOTICE file
@@ -515,7 +515,7 @@
 * Added amazon-fireos platform. Change to use amazon-fireos as the platform if user agent string contains 'cordova-amazon-fireos'
 * [CB-5188](https://issues.apache.org/jira/browse/CB-5188)
 * [CB-5188](https://issues.apache.org/jira/browse/CB-5188) Updated version and RELEASENOTES.md for release 0.2.4
-* [CB-5128](https://issues.apache.org/jira/browse/CB-5128) added repo + issue tag to plugin.xml for inappbrowser plugin
+* [CB-5128](https://issues.apache.org/jira/browse/CB-5128) added repo + issue tag to plugin.xml for kipibrowser plugin
 * [CB-4995](https://issues.apache.org/jira/browse/CB-4995) Fix crash when WebView is quickly opened then closed.
 * [CB-4930](https://issues.apache.org/jira/browse/CB-4930) - iOS - KipiBrowser should take into account the status bar
 * [CB-5010](https://issues.apache.org/jira/browse/CB-5010) Incremented plugin version on dev branch.
@@ -527,7 +527,7 @@
 * [CB-5021](https://issues.apache.org/jira/browse/CB-5021) Make it safe to call close() multiple times
 * [CB-5010](https://issues.apache.org/jira/browse/CB-5010) Updated version and RELEASENOTES.md for release 0.2.3
 * [CB-4915](https://issues.apache.org/jira/browse/CB-4915) Incremented plugin version on dev branch.
-* [CB-4926](https://issues.apache.org/jira/browse/CB-4926) Fixes inappbrowser plugin loading for windows8
+* [CB-4926](https://issues.apache.org/jira/browse/CB-4926) Fixes kipibrowser plugin loading for windows8
 * [CB-4915](https://issues.apache.org/jira/browse/CB-4915) Updated version and RELEASENOTES.md for release 0.2.2
 * [CB-4889](https://issues.apache.org/jira/browse/CB-4889) bumping&resetting version
 * [CB-4788](https://issues.apache.org/jira/browse/CB-4788) Modified the onJsPrompt to warn against Cordova calls
@@ -535,7 +535,7 @@
 * [CB-4788](https://issues.apache.org/jira/browse/CB-4788) Modified the onJsPrompt to warn against Cordova calls
 * [windows8] commandProxy was moved
 * [CB-4889](https://issues.apache.org/jira/browse/CB-4889) renaming core references
-* [CB-4889](https://issues.apache.org/jira/browse/CB-4889) renaming org.apache.cordova.core.inappbrowser to org.apache.cordova.inappbrowser
+* [CB-4889](https://issues.apache.org/jira/browse/CB-4889) renaming org.apache.cordova.core.kipibrowser to org.apache.cordova.kipibrowser
 * CB-4864, [CB-4865](https://issues.apache.org/jira/browse/CB-4865) Minor improvements to KipiBrowser
 * Rename CHANGELOG.md -> RELEASENOTES.md
 * [CB-4792](https://issues.apache.org/jira/browse/CB-4792) Added keepCallback to the show function.
@@ -550,7 +550,7 @@
 * updated Readme, namespace and name tag
 * [plugin.xml] standardizing license + meta
 * [license] adding apache license file
-* [CB-4399](https://issues.apache.org/jira/browse/CB-4399) removed blackberry entry in plugin xml. Installation of plugin interferes with natively supported childbrowser functionality. To support additional inappbrowser features, see [CB-4467.](https://issues.apache.org/jira/browse/CB-4467.)
+* [CB-4399](https://issues.apache.org/jira/browse/CB-4399) removed blackberry entry in plugin xml. Installation of plugin interferes with natively supported childbrowser functionality. To support additional kipibrowser features, see [CB-4467.](https://issues.apache.org/jira/browse/CB-4467.)
 * updating plugin.xml with registry data
 * [CB-4368](https://issues.apache.org/jira/browse/CB-4368) Explicit CoreGraphics.framework dependency should be specified for some core plugins
 
@@ -569,7 +569,7 @@
 * [CB-5402](https://issues.apache.org/jira/browse/CB-5402) added extra content from wiki page
 * [CB-2063](https://issues.apache.org/jira/browse/CB-2063) (**ios**) Fixed presentation style
 * [CB-11012](https://issues.apache.org/jira/browse/CB-11012) added some clarifications about `KipiBrowser` object
-* [CB-3360](https://issues.apache.org/jira/browse/CB-3360) Set custom `inappbrowser` user agent for **ios**
+* [CB-3360](https://issues.apache.org/jira/browse/CB-3360) Set custom `kipibrowser` user agent for **ios**
 * Add badges for paramedic builds on Jenkins
 * [CB-11381](https://issues.apache.org/jira/browse/CB-11381) android: Does not pass sonarqube scan
 * Add pull request template.
@@ -585,7 +585,7 @@
 * [CB-10636](https://issues.apache.org/jira/browse/CB-10636) Add `JSHint` for plugins
 
 ### 1.3.0 (Feb 09, 2016)
-* [CB-3360](https://issues.apache.org/jira/browse/CB-3360) Set custom inappbrowser user agent for android
+* [CB-3360](https://issues.apache.org/jira/browse/CB-3360) Set custom kipibrowser user agent for android
 * [CB-10538](https://issues.apache.org/jira/browse/CB-10538) cordova-plugin-kipibrowser timeout issue
 * [CB-10395](https://issues.apache.org/jira/browse/CB-10395) KipiBrowser's WebView not storing cookies reliable on Android
 * Edit package.json license to match SPDX id
@@ -688,7 +688,7 @@
 ### 0.5.3 (Oct 03, 2014)
 * Windows implementation fixes and improvements
 * zIndex fixed
-* renamed KipiBrowser back to inappbrowser for case sensitive operating systems
+* renamed KipiBrowser back to kipibrowser for case sensitive operating systems
 * Update french translation
 * Update doc to add Windows 8
 * Update windows proxy to be both compatible with windows 8 and 8.1
@@ -705,9 +705,9 @@
 * [CB-7133](https://issues.apache.org/jira/browse/CB-7133) more fixup of tests on Android
 * [CB-7133](https://issues.apache.org/jira/browse/CB-7133) fix up the tests for Android
 * Add just a bit more logging
-* [CB-7133](https://issues.apache.org/jira/browse/CB-7133) port inappbrowser to plugin-test-framework
+* [CB-7133](https://issues.apache.org/jira/browse/CB-7133) port kipibrowser to plugin-test-framework
 * phonegap events supported for \_blank target
-* inappbrowser \_blank target position is fixed
+* kipibrowser \_blank target position is fixed
 * amazon-fireos related changes.
 
 ### 0.5.1 (Aug 06, 2014)
@@ -734,7 +734,7 @@
 
 ### 0.4.0 (Apr 17, 2014)
 * [CB-6360](https://issues.apache.org/jira/browse/CB-6360): [ios] Fix for crash on iOS < 6.0 (closes #37)
-* [CB-3324](https://issues.apache.org/jira/browse/CB-3324): [WP8] Add support for back-button inappbrowser [WP8] if there is no history -> KipiBrowser is closed
+* [CB-3324](https://issues.apache.org/jira/browse/CB-3324): [WP8] Add support for back-button kipibrowser [WP8] if there is no history -> KipiBrowser is closed
 * [WP] await async calls, resolve warnings
 * [WP] Make KipiBrowser work with embedded files, using system behavior
 * [CB-6402](https://issues.apache.org/jira/browse/CB-6402): [WP8] pass empty string instead of null for [optional] windowFeatures string
@@ -772,7 +772,7 @@
 * Added amazon-fireos platform. Change to use amazon-fireos as the platform if user agent string contains 'cordova-amazon-fireos'
 
 ### 0.2.4 (Oct 28, 2013)
-* [CB-5128](https://issues.apache.org/jira/browse/CB-5128): added repo + issue tag to plugin.xml for inappbrowser plugin
+* [CB-5128](https://issues.apache.org/jira/browse/CB-5128): added repo + issue tag to plugin.xml for kipibrowser plugin
 * [CB-4995](https://issues.apache.org/jira/browse/CB-4995) Fix crash when WebView is quickly opened then closed.
 * [CB-4930](https://issues.apache.org/jira/browse/CB-4930) - iOS - KipiBrowser should take into account the status bar
 * [CB-5010](https://issues.apache.org/jira/browse/CB-5010) Incremented plugin version on dev branch.
@@ -785,7 +785,7 @@
 
 ### 0.2.3 (Oct 9, 2013)
 * [CB-4915](https://issues.apache.org/jira/browse/CB-4915) Incremented plugin version on dev branch.
-* [CB-4926](https://issues.apache.org/jira/browse/CB-4926) Fixes inappbrowser plugin loading for windows8
+* [CB-4926](https://issues.apache.org/jira/browse/CB-4926) Fixes kipibrowser plugin loading for windows8
 
 ### 0.2.2 (Sept 25, 2013)
 * [CB-4889](https://issues.apache.org/jira/browse/CB-4889) bumping&resetting version
@@ -794,7 +794,7 @@
 * [CB-4788](https://issues.apache.org/jira/browse/CB-4788): Modified the onJsPrompt to warn against Cordova calls
 * [windows8] commandProxy was moved
 * [CB-4889](https://issues.apache.org/jira/browse/CB-4889) renaming core references
-* [CB-4889](https://issues.apache.org/jira/browse/CB-4889) renaming org.apache.cordova.core.inappbrowser to org.apache.cordova.inappbrowser
+* [CB-4889](https://issues.apache.org/jira/browse/CB-4889) renaming org.apache.cordova.core.kipibrowser to org.apache.cordova.kipibrowser
 * [CB-4864](https://issues.apache.org/jira/browse/CB-4864), [CB-4865](https://issues.apache.org/jira/browse/CB-4865): Minor improvements to KipiBrowser
 * Rename CHANGELOG.md -> RELEASENOTES.md
 * [CB-4792](https://issues.apache.org/jira/browse/CB-4792) Added keepCallback to the show function.
