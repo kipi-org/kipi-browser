@@ -25,7 +25,7 @@
     const modulemapper = require('cordova/modulemapper');
     const urlutil = require('cordova/urlutil');
 
-    function InAppBrowser () {
+    function KipiBrowser () {
         this.channels = {
             beforeload: channel.create('beforeload'),
             loadstart: channel.create('loadstart'),
@@ -38,7 +38,7 @@
         };
     }
 
-    InAppBrowser.prototype = {
+    KipiBrowser.prototype = {
         _eventHandler: function (event) {
             if (event && event.type in this.channels) {
                 if (event.type === 'beforeload') {
@@ -50,16 +50,16 @@
         },
         _loadAfterBeforeload: function (strUrl) {
             strUrl = urlutil.makeAbsolute(strUrl);
-            exec(null, null, 'InAppBrowser', 'loadAfterBeforeload', [strUrl]);
+            exec(null, null, 'KipiBrowser', 'loadAfterBeforeload', [strUrl]);
         },
         close: function (eventname) {
-            exec(null, null, 'InAppBrowser', 'close', []);
+            exec(null, null, 'KipiBrowser', 'close', []);
         },
         show: function (eventname) {
-            exec(null, null, 'InAppBrowser', 'show', []);
+            exec(null, null, 'KipiBrowser', 'show', []);
         },
         hide: function (eventname) {
-            exec(null, null, 'InAppBrowser', 'hide', []);
+            exec(null, null, 'KipiBrowser', 'hide', []);
         },
         addEventListener: function (eventname, f) {
             if (eventname in this.channels) {
@@ -74,9 +74,9 @@
 
         executeScript: function (injectDetails, cb) {
             if (injectDetails.code) {
-                exec(cb, null, 'InAppBrowser', 'injectScriptCode', [injectDetails.code, !!cb]);
+                exec(cb, null, 'KipiBrowser', 'injectScriptCode', [injectDetails.code, !!cb]);
             } else if (injectDetails.file) {
-                exec(cb, null, 'InAppBrowser', 'injectScriptFile', [injectDetails.file, !!cb]);
+                exec(cb, null, 'KipiBrowser', 'injectScriptFile', [injectDetails.file, !!cb]);
             } else {
                 throw new Error('executeScript requires exactly one of code or file to be specified');
             }
@@ -84,21 +84,21 @@
 
         insertCSS: function (injectDetails, cb) {
             if (injectDetails.code) {
-                exec(cb, null, 'InAppBrowser', 'injectStyleCode', [injectDetails.code, !!cb]);
+                exec(cb, null, 'KipiBrowser', 'injectStyleCode', [injectDetails.code, !!cb]);
             } else if (injectDetails.file) {
-                exec(cb, null, 'InAppBrowser', 'injectStyleFile', [injectDetails.file, !!cb]);
+                exec(cb, null, 'KipiBrowser', 'injectStyleFile', [injectDetails.file, !!cb]);
             } else {
                 throw new Error('insertCSS requires exactly one of code or file to be specified');
             }
         },
 
         addDownloadListener: function (success, error) {
-            exec(success, error, 'InAppBrowser', 'downloadListener');
+            exec(success, error, 'KipiBrowser', 'downloadListener');
         },
 
         dispatchKeyEvent(key) {
             console.log("KEY PISPATCHED!!")
-            exec(null, null, 'InAppBrowser', 'dispatchKeyEvent', [key]);
+            exec(null, null, 'KipiBrowser', 'dispatchKeyEvent', [key]);
         },
     };
 
@@ -110,7 +110,7 @@
         }
 
         strUrl = urlutil.makeAbsolute(strUrl);
-        const iab = new InAppBrowser();
+        const iab = new KipiBrowser();
 
         callbacks = callbacks || {};
         for (const callbackName in callbacks) {
@@ -123,7 +123,7 @@
 
         strWindowFeatures = strWindowFeatures || '';
 
-        exec(cb, cb, 'InAppBrowser', 'open', [strUrl, strWindowName, strWindowFeatures]);
+        exec(cb, cb, 'KipiBrowser', 'open', [strUrl, strWindowName, strWindowFeatures]);
         console.log("OPEN")
         return iab;
     };

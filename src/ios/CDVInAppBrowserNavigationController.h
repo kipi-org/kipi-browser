@@ -21,7 +21,7 @@
 #import <Cordova/CDVScreenOrientationDelegate.h>
 
 
-@interface CDVInAppBrowserNavigationController : UINavigationController
+@interface CDVKipiBrowserNavigationController : UINavigationController
 
 @property (nonatomic, weak) id <CDVScreenOrientationDelegate> orientationDelegate;
 

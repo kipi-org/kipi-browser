@@ -1,18 +1,17 @@
 {
-  "name": "cordova-plugin-inappbrowser",
+  "name": "cordova-plugin-kipibrowser",
   "version": "6.0.1-dev",
-  "description": "Cordova InAppBrowser Plugin",
+  "description": "Cordova KipiBrowser Plugin",
   "types": "./types/index.d.ts",
   "cordova": {
-    "id": "cordova-plugin-inappbrowser",
+    "id": "cordova-plugin-kipibrowser",
     "platforms": [
       "android",
       "browser",
       "ios"
     ]
   },
-  "repository": "github:apache/cordova-plugin-inappbrowser",
-  "bugs": "https://github.com/apache/cordova-plugin-inappbrowser/issues",
+  "repository": "git@github.com:kipi-org/kipi-browser.git",
   "keywords": [
     "cordova",
     "in",

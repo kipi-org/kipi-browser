@@ -19,15 +19,15 @@
 -->
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-           id="cordova-plugin-inappbrowser"
+           id="cordova-plugin-kipibrowser"
       version="6.0.1-dev">
 
-    <name>InAppBrowser</name>
-    <description>Cordova InAppBrowser Plugin</description>
+    <name>KipiBrowser</name>
+    <description>Cordova KipiBrowser Plugin</description>
     <license>Apache 2.0</license>
     <keywords>cordova,in,app,browser,inappbrowser</keywords>
-    <repo>https://github.com/apache/cordova-plugin-inappbrowser</repo>
-    <issue>https://github.com/apache/cordova-plugin-inappbrowser/issues</issue>
+    <repo>https://github.com/apache/cordova-plugin-kipibrowser</repo>
+    <issue>https://github.com/apache/cordova-plugin-kipibrowser/issues</issue>
 
     <engines>
         <engine name="cordova" version=">=9.0.0"/>
@@ -38,16 +38,16 @@
     <!-- android -->
     <platform name="android">
         <js-module src="www/inappbrowser.js" name="inappbrowser">
-            <clobbers target="cordova.InAppBrowser.open" />
+            <clobbers target="cordova.KipiBrowser.open" />
         </js-module>
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="InAppBrowser">
-                <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser"/>
+            <feature name="KipiBrowser">
+                <param name="android-package" value="org.apache.cordova.inappbrowser.KipiBrowser"/>
             </feature>
         </config-file>
 
-        <source-file src="src/android/InAppBrowser.java" target-dir="src/org/apache/cordova/inappbrowser" />
-        <source-file src="src/android/InAppBrowserDialog.java" target-dir="src/org/apache/cordova/inappbrowser" />
+        <source-file src="src/android/KipiBrowser.java" target-dir="src/org/apache/cordova/inappbrowser" />
+        <source-file src="src/android/KipiBrowserDialog.java" target-dir="src/org/apache/cordova/inappbrowser" />
         <source-file src="src/android/InAppChromeClient.java" target-dir="src/org/apache/cordova/inappbrowser" />
 
         <!-- drawable src/android/resources -->
@@ -71,22 +71,22 @@
     <!-- ios -->
     <platform name="ios">
         <js-module src="www/inappbrowser.js" name="inappbrowser">
-            <clobbers target="cordova.InAppBrowser.open" />
+            <clobbers target="cordova.KipiBrowser.open" />
         </js-module>
         <config-file target="config.xml" parent="/*">
-            <feature name="InAppBrowser">
-                <param name="ios-package" value="CDVWKInAppBrowser" />
+            <feature name="KipiBrowser">
+                <param name="ios-package" value="CDVWKKipiBrowser" />
                 <param name="onload" value="true" />
             </feature>
         </config-file>
-        <header-file src="src/ios/CDVInAppBrowserOptions.h" />
-        <source-file src="src/ios/CDVInAppBrowserOptions.m" />
-        <header-file src="src/ios/CDVInAppBrowserNavigationController.h" />
-        <source-file src="src/ios/CDVInAppBrowserNavigationController.m" />
-	    <header-file src="src/ios/CDVWKInAppBrowser.h" />
-	    <source-file src="src/ios/CDVWKInAppBrowser.m" />
-	    <header-file src="src/ios/CDVWKInAppBrowserUIDelegate.h" />
-	    <source-file src="src/ios/CDVWKInAppBrowserUIDelegate.m" />
+        <header-file src="src/ios/CDVKipiBrowserOptions.h" />
+        <source-file src="src/ios/CDVKipiBrowserOptions.m" />
+        <header-file src="src/ios/CDVKipiBrowserNavigationController.h" />
+        <source-file src="src/ios/CDVKipiBrowserNavigationController.m" />
+	    <header-file src="src/ios/CDVWKKipiBrowser.h" />
+	    <source-file src="src/ios/CDVWKKipiBrowser.m" />
+	    <header-file src="src/ios/CDVWKKipiBrowserUIDelegate.h" />
+	    <source-file src="src/ios/CDVWKKipiBrowserUIDelegate.m" />
 
 	    <framework src="CoreGraphics.framework" />
     </platform>
@@ -94,9 +94,9 @@
     <!-- browser -->
     <platform name="browser">
         <js-module src="www/inappbrowser.js" name="inappbrowser">
-            <clobbers target="cordova.InAppBrowser.open" />
+            <clobbers target="cordova.KipiBrowser.open" />
         </js-module>
-        <js-module src="src/browser/InAppBrowserProxy.js" name="InAppBrowserProxy">
+        <js-module src="src/browser/KipiBrowserProxy.js" name="KipiBrowserProxy">
             <runs />
         </js-module>
     </platform>

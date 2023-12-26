@@ -19,7 +19,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CDVInAppBrowserOptions : NSObject {}
+@interface CDVKipiBrowserOptions : NSObject {}
 
 @property (nonatomic, assign) BOOL location;
 @property (nonatomic, assign) BOOL toolbar;
@@ -46,6 +46,6 @@
 @property (nonatomic, assign) BOOL disallowoverscroll;
 @property (nonatomic, copy) NSString* beforeload;
 
-+ (CDVInAppBrowserOptions*)parseOptions:(NSString*)options;
++ (CDVKipiBrowserOptions*)parseOptions:(NSString*)options;
 
 @end

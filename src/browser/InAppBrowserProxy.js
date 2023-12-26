@@ -216,7 +216,7 @@ const IAB = {
     },
 
     injectScriptFile: function (win, fail, args) {
-        const msg = 'Browser cordova-plugin-inappbrowser injectScriptFile is not yet implemented';
+        const msg = 'Browser cordova-plugin-kipibrowser injectScriptFile is not yet implemented';
         console.warn(msg);
         if (fail) {
             fail(msg);
@@ -224,7 +224,7 @@ const IAB = {
     },
 
     injectStyleCode: function (win, fail, args) {
-        const msg = 'Browser cordova-plugin-inappbrowser injectStyleCode is not yet implemented';
+        const msg = 'Browser cordova-plugin-kipibrowser injectStyleCode is not yet implemented';
         console.warn(msg);
         if (fail) {
             fail(msg);
@@ -232,7 +232,7 @@ const IAB = {
     },
 
     injectStyleFile: function (win, fail, args) {
-        const msg = 'Browser cordova-plugin-inappbrowser injectStyleFile is not yet implemented';
+        const msg = 'Browser cordova-plugin-kipibrowser injectStyleFile is not yet implemented';
         console.warn(msg);
         if (fail) {
             fail(msg);
@@ -242,4 +242,4 @@ const IAB = {
 
 module.exports = IAB;
 
-require('cordova/exec/proxy').add('InAppBrowser', module.exports);
+require('cordova/exec/proxy').add('KipiBrowser', module.exports);

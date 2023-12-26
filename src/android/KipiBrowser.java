@@ -85,10 +85,10 @@ import java.util.HashMap;
 import java.util.StringTokenizer;
 
 @SuppressLint("SetJavaScriptEnabled")
-public class InAppBrowser extends CordovaPlugin {
+public class KipiBrowser extends CordovaPlugin {
 
     private static final String NULL = "null";
-    protected static final String LOG_TAG = "InAppBrowser";
+    protected static final String LOG_TAG = "KipiBrowser";
     private static final String SELF = "_self";
     private static final String SYSTEM = "_system";
     private static final String EXIT_EVENT = "exit";
@@ -123,7 +123,7 @@ public class InAppBrowser extends CordovaPlugin {
 
     private static final List customizableOptions = Arrays.asList(CLOSE_BUTTON_CAPTION, TOOLBAR_COLOR, NAVIGATION_COLOR, CLOSE_BUTTON_COLOR, FOOTER_COLOR);
 
-    private InAppBrowserDialog dialog;
+    private KipiBrowserDialog dialog;
     private WebView inAppWebView;
     private EditText edittext;
     private CallbackContext callbackContext;
@@ -134,7 +134,7 @@ public class InAppBrowser extends CordovaPlugin {
     private boolean clearSessionCache = false;
     private boolean hadwareBackButton = true;
     private boolean mediaPlaybackRequiresUserGesture = false;
-    private boolean shouldPauseInAppBrowser = false;
+    private boolean shouldPauseKipiBrowser = false;
     private boolean useWideViewPort = true;
     private ValueCallback<Uri[]> mUploadCallback;
     private final static int FILECHOOSER_REQUESTCODE = 1;
@@ -150,7 +150,7 @@ public class InAppBrowser extends CordovaPlugin {
     private String beforeload = "";
     private boolean fullscreen = true;
     private String[] allowedSchemes;
-    private InAppBrowserClient currentClient;
+    private KipiBrowserClient currentClient;
 
     /**
      * Executes the request and returns PluginResult.
@@ -234,9 +234,9 @@ public class InAppBrowser extends CordovaPlugin {
                                 LOG.e(LOG_TAG, "Error dialing " + url + ": " + e.toString());
                             }
                         }
-                        // load in InAppBrowser
+                        // load in KipiBrowser
                         else {
-                            LOG.d(LOG_TAG, "loading in InAppBrowser");
+                            LOG.d(LOG_TAG, "loading in KipiBrowser");
                             result = showWebPage(url, features);
                         }
                     }
@@ -273,7 +273,7 @@ public class InAppBrowser extends CordovaPlugin {
                         currentClient.waitForBeforeload = false;
                         inAppWebView.setWebViewClient(currentClient);
                     } else {
-                        ((InAppBrowserClient)inAppWebView.getWebViewClient()).waitForBeforeload = false;
+                        ((KipiBrowserClient)inAppWebView.getWebViewClient()).waitForBeforeload = false;
                     }
                     inAppWebView.loadUrl(url);
 
@@ -363,7 +363,7 @@ public class InAppBrowser extends CordovaPlugin {
      */
     @Override
     public void onPause(boolean multitasking) {
-        if (shouldPauseInAppBrowser) {
+        if (shouldPauseKipiBrowser) {
             inAppWebView.onPause();
         }
     }
@@ -373,7 +373,7 @@ public class InAppBrowser extends CordovaPlugin {
      */
     @Override
     public void onResume(boolean multitasking) {
-        if (shouldPauseInAppBrowser) {
+        if (shouldPauseKipiBrowser) {
             inAppWebView.onResume();
         }
     }
@@ -387,7 +387,7 @@ public class InAppBrowser extends CordovaPlugin {
     }
 
     /**
-     * Inject an object (script or style) into the InAppBrowser WebView.
+     * Inject an object (script or style) into the KipiBrowser WebView.
      *
      * This is a helper method for the inject{Script|Style}{Code|File} API calls, which
      * provides a consistent method for injecting JavaScript code into the document.
@@ -479,7 +479,7 @@ public class InAppBrowser extends CordovaPlugin {
             return "";
             // not catching FileUriExposedException explicitly because buildtools<24 doesn't know about it
         } catch (java.lang.RuntimeException e) {
-            LOG.d(LOG_TAG, "InAppBrowser: Error loading url "+url+":"+ e.toString());
+            LOG.d(LOG_TAG, "KipiBrowser: Error loading url "+url+":"+ e.toString());
             return e.toString();
         }
     }
@@ -624,7 +624,7 @@ public class InAppBrowser extends CordovaPlugin {
         return this.showLocationBar;
     }
 
-    private InAppBrowser getInAppBrowser() {
+    private KipiBrowser getKipiBrowser() {
         return this;
     }
 
@@ -681,7 +681,7 @@ public class InAppBrowser extends CordovaPlugin {
             }
             String shouldPause = features.get(SHOULD_PAUSE);
             if (shouldPause != null) {
-                shouldPauseInAppBrowser = shouldPause.equals("yes") ? true : false;
+                shouldPauseKipiBrowser = shouldPause.equals("yes") ? true : false;
             }
             String wideViewPort = features.get(USER_WIDE_VIEW_PORT);
             if (wideViewPort != null ) {
@@ -787,20 +787,20 @@ public class InAppBrowser extends CordovaPlugin {
             @SuppressLint("NewApi")
             public void run() {
 
-                // CB-6702 InAppBrowser hangs when opening more than one instance
+                // CB-6702 KipiBrowser hangs when opening more than one instance
                 if (dialog != null) {
                     dialog.dismiss();
                 };
 
                 // Let's create the main dialog
-                dialog = new InAppBrowserDialog(cordova.getActivity(), android.R.style.Theme_NoTitleBar);
+                dialog = new KipiBrowserDialog(cordova.getActivity(), android.R.style.Theme_NoTitleBar);
                 dialog.getWindow().getAttributes().windowAnimations = android.R.style.Animation_Dialog;
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 if (fullscreen) {
                     dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
                 }
                 dialog.setCancelable(true);
-                dialog.setInAppBroswer(getInAppBrowser());
+                dialog.setInAppBroswer(getKipiBrowser());
 
                 // Main container layout
                 LinearLayout main = new LinearLayout(cordova.getActivity());
@@ -943,11 +943,11 @@ public class InAppBrowser extends CordovaPlugin {
                         content.setType("*/*");
 
                         // Run cordova startActivityForResult
-                        cordova.startActivityForResult(InAppBrowser.this, Intent.createChooser(content, "Select File"), FILECHOOSER_REQUESTCODE);
+                        cordova.startActivityForResult(KipiBrowser.this, Intent.createChooser(content, "Select File"), FILECHOOSER_REQUESTCODE);
                         return true;
                     }
                 });
-                currentClient = new InAppBrowserClient(thatWebView, edittext, beforeload);
+                currentClient = new KipiBrowserClient(thatWebView, edittext, beforeload);
                 inAppWebView.setWebViewClient(currentClient);
                 WebSettings settings = inAppWebView.getSettings();
                 settings.setJavaScriptEnabled(true);
@@ -1009,7 +1009,7 @@ public class InAppBrowser extends CordovaPlugin {
 
                 //Toggle whether this is enabled or not!
                 Bundle appSettings = cordova.getActivity().getIntent().getExtras();
-                boolean enableDatabase = appSettings == null ? true : appSettings.getBoolean("InAppBrowserStorageEnabled", true);
+                boolean enableDatabase = appSettings == null ? true : appSettings.getBoolean("KipiBrowserStorageEnabled", true);
                 if (enableDatabase) {
                     String databasePath = cordova.getActivity().getApplicationContext().getDir("inAppBrowserDB", Context.MODE_PRIVATE).getPath();
                     settings.setDatabasePath(databasePath);
@@ -1128,7 +1128,7 @@ public class InAppBrowser extends CordovaPlugin {
     /**
      * The webview client receives notifications about appView
      */
-    public class InAppBrowserClient extends WebViewClient {
+    public class KipiBrowserClient extends WebViewClient {
         EditText edittext;
         CordovaWebView webView;
         String beforeload;
@@ -1140,7 +1140,7 @@ public class InAppBrowser extends CordovaPlugin {
          * @param webView
          * @param mEditText
          */
-        public InAppBrowserClient(CordovaWebView webView, EditText mEditText, String beforeload) {
+        public KipiBrowserClient(CordovaWebView webView, EditText mEditText, String beforeload) {
             this.webView = webView;
             this.edittext = mEditText;
             this.beforeload = beforeload;
@@ -1381,7 +1381,7 @@ public class InAppBrowser extends CordovaPlugin {
             // Set the namespace for postMessage()
             injectDeferredObject("window.webkit={messageHandlers:{cordova_iab:cordova_iab}}", null);
 
-            // CB-10395 InAppBrowser's WebView not storing cookies reliable to local device storage
+            // CB-10395 KipiBrowser's WebView not storing cookies reliable to local device storage
             CookieManager.getInstance().flush();
 
             // https://issues.apache.org/jira/browse/CB-11248

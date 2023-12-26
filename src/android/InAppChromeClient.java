@@ -46,7 +46,7 @@ public class InAppChromeClient extends WebChromeClient {
         super();
         this.webView = webView;
     }
-    
+
     public void onPermissionRequest(final PermissionRequest request) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             request.grant(request.getResources());
@@ -88,8 +88,8 @@ public class InAppChromeClient extends WebChromeClient {
      * If the client returns true, WebView will assume that the client will
      * handle the prompt dialog and call the appropriate JsPromptResult method.
      *
-     * The prompt bridge provided for the InAppBrowser is capable of executing any
-     * oustanding callback belonging to the InAppBrowser plugin. Care has been
+     * The prompt bridge provided for the KipiBrowser is capable of executing any
+     * oustanding callback belonging to the KipiBrowser plugin. Care has been
      * taken that other callbacks cannot be triggered, and that no other code
      * execution is possible.
      *
@@ -98,7 +98,7 @@ public class InAppChromeClient extends WebChromeClient {
      * gap-iab://<callbackId>
      *
      * where <callbackId> is the string id of the callback to trigger (something
-     * like "InAppBrowser0123456789")
+     * like "KipiBrowser0123456789")
      *
      * If present, the prompt message is expected to be a JSON-encoded value to
      * pass to the callback. A JSON_EXCEPTION is returned if the JSON is invalid.
@@ -116,7 +116,7 @@ public class InAppChromeClient extends WebChromeClient {
             if(defaultValue.startsWith("gap-iab://")) {
                 PluginResult scriptResult;
                 String scriptCallbackId = defaultValue.substring(10);
-                if (scriptCallbackId.matches("^InAppBrowser[0-9]{1,10}$")) {
+                if (scriptCallbackId.matches("^KipiBrowser[0-9]{1,10}$")) {
                     if(message == null || message.length() == 0) {
                         scriptResult = new PluginResult(PluginResult.Status.OK, new JSONArray());
                     } else {
@@ -131,15 +131,15 @@ public class InAppChromeClient extends WebChromeClient {
                     return true;
                 }
                 else {
-                    // Anything else that doesn't look like InAppBrowser0123456789 should end up here
-                    LOG.w(LOG_TAG, "InAppBrowser callback called with invalid callbackId : "+ scriptCallbackId);
+                    // Anything else that doesn't look like KipiBrowser0123456789 should end up here
+                    LOG.w(LOG_TAG, "KipiBrowser callback called with invalid callbackId : "+ scriptCallbackId);
                     result.cancel();
                     return true;
                 }
             }
             else {
                 // Anything else with a gap: prefix should get this message
-                LOG.w(LOG_TAG, "InAppBrowser does not support Cordova API calls: " + url + " " + defaultValue); 
+                LOG.w(LOG_TAG, "KipiBrowser does not support Cordova API calls: " + url + " " + defaultValue);
                 result.cancel();
                 return true;
             }

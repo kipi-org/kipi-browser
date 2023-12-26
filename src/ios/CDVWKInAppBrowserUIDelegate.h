@@ -19,7 +19,7 @@
 
 #import <WebKit/WebKit.h>
 
-@interface CDVWKInAppBrowserUIDelegate : NSObject <WKUIDelegate>{
+@interface CDVWKKipiBrowserUIDelegate : NSObject <WKUIDelegate>{
     @private
     UIViewController* _viewController;
 }

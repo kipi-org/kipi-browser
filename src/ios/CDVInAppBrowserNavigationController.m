@@ -17,9 +17,9 @@
  under the License.
  */
 
-#import "CDVInAppBrowserNavigationController.h"
+#import "CDVKipiBrowserNavigationController.h"
 
-@implementation CDVInAppBrowserNavigationController : UINavigationController
+@implementation CDVKipiBrowserNavigationController : UINavigationController
 
 - (void) dismissViewControllerAnimated:(BOOL)flag completion:(void (^)(void))completion {
     if ( self.presentedViewController) {

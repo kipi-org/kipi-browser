@@ -30,14 +30,14 @@ exports.defineAutoTests = function () {
     const createTests = function (platformOpts) {
         platformOpts = platformOpts || '';
 
-        describe('cordova.InAppBrowser', function () {
+        describe('cordova.KipiBrowser', function () {
             it('inappbrowser.spec.1 should exist', function () {
-                expect(cordova.InAppBrowser).toBeDefined();
+                expect(cordova.KipiBrowser).toBeDefined();
             });
 
             it('inappbrowser.spec.2 should contain open function', function () {
-                expect(cordova.InAppBrowser.open).toBeDefined();
-                expect(cordova.InAppBrowser.open).toEqual(jasmine.any(Function));
+                expect(cordova.KipiBrowser.open).toBeDefined();
+                expect(cordova.KipiBrowser.open).toEqual(jasmine.any(Function));
             });
         });
 
@@ -89,8 +89,8 @@ exports.defineAutoTests = function () {
                 expect(evt.message).toEqual(jasmine.any(String));
             }
 
-            it('inappbrowser.spec.3 should return InAppBrowser instance with required methods', function () {
-                iabInstance = cordova.InAppBrowser.open(url, '_blank', platformOpts);
+            it('inappbrowser.spec.3 should return KipiBrowser instance with required methods', function () {
+                iabInstance = cordova.KipiBrowser.open(url, '_blank', platformOpts);
 
                 expect(iabInstance).toBeDefined();
 
@@ -108,13 +108,13 @@ exports.defineAutoTests = function () {
                     verifyEvent(evt, 'loadstart');
                 });
 
-                iabInstance = cordova.InAppBrowser.open(url, '_blank', platformOpts);
+                iabInstance = cordova.KipiBrowser.open(url, '_blank', platformOpts);
                 iabInstance.addEventListener('loadstart', onLoadStart);
                 iabInstance.addEventListener('loadstop', function (evt) {
                     verifyEvent(evt, 'loadstop');
                     if (!isBrowser) {
                         // according to documentation, "loadstart" event is not supported on browser
-                        // https://github.com/apache/cordova-plugin-inappbrowser#browser-quirks-1
+                        // https://github.com/apache/cordova-plugin-kipibrowser#browser-quirks-1
                         expect(onLoadStart).toHaveBeenCalled();
                     }
                     done();
@@ -122,7 +122,7 @@ exports.defineAutoTests = function () {
             });
 
             it('inappbrowser.spec.5 should support exit event', function (done) {
-                iabInstance = cordova.InAppBrowser.open(url, '_blank', platformOpts);
+                iabInstance = cordova.KipiBrowser.open(url, '_blank', platformOpts);
                 iabInstance.addEventListener('exit', function (evt) {
                     verifyEvent(evt, 'exit');
                     done();
@@ -136,10 +136,10 @@ exports.defineAutoTests = function () {
             it('inappbrowser.spec.6 should support loaderror event', function (done) {
                 if (isBrowser) {
                     // according to documentation, "loaderror" event is not supported on browser
-                    // https://github.com/apache/cordova-plugin-inappbrowser#browser-quirks-1
+                    // https://github.com/apache/cordova-plugin-kipibrowser#browser-quirks-1
                     pending("Browser platform doesn't support loaderror event");
                 }
-                iabInstance = cordova.InAppBrowser.open(badUrl, '_blank', platformOpts);
+                iabInstance = cordova.KipiBrowser.open(badUrl, '_blank', platformOpts);
                 iabInstance.addEventListener('loaderror', function (evt) {
                     verifyLoadErrorEvent(evt);
                     done();
@@ -152,7 +152,7 @@ exports.defineAutoTests = function () {
                 }
                 const messageKey = 'my_message';
                 const messageValue = 'is_this';
-                iabInstance = cordova.InAppBrowser.open(url, '_blank', platformOpts);
+                iabInstance = cordova.KipiBrowser.open(url, '_blank', platformOpts);
                 iabInstance.addEventListener('message', function (evt) {
                     // Verify message event
                     expect(evt).toBeDefined();
@@ -217,7 +217,7 @@ exports.defineManualTests = function (contentEl, createActionButton) {
             if (platformOpts) {
                 params += (params ? ',' : '') + platformOpts;
             }
-            iab = cordova.InAppBrowser.open(url, target, params, callbacks);
+            iab = cordova.KipiBrowser.open(url, target, params, callbacks);
         }
         if (!iab) {
             alert('open returned ' + iab); // eslint-disable-line no-undef
@@ -273,7 +273,7 @@ exports.defineManualTests = function (contentEl, createActionButton) {
     function doHookOpen (url, target, params, numExpectedRedirects) {
         const originalFunc = window.open;
         const wasClobbered = Object.prototype.hasOwnProperty.call(window, 'open');
-        window.open = cordova.InAppBrowser.open;
+        window.open = cordova.KipiBrowser.open;
 
         try {
             doOpen(url, target, params, numExpectedRedirects, true);
@@ -357,9 +357,9 @@ exports.defineManualTests = function (contentEl, createActionButton) {
         if (platformOpts) {
             shopt += (shopt ? ',' : '') + platformOpts;
         }
-        hiddenwnd = cordova.InAppBrowser.open(url, 'random_string', shopt);
+        hiddenwnd = cordova.KipiBrowser.open(url, 'random_string', shopt);
         if (!hiddenwnd) {
-            alert('cordova.InAppBrowser.open returned ' + hiddenwnd); // eslint-disable-line no-undef
+            alert('cordova.KipiBrowser.open returned ' + hiddenwnd); // eslint-disable-line no-undef
             return;
         }
         if (startHidden) hiddenwnd.addEventListener('loadstop', loadlistener);
@@ -378,7 +378,7 @@ exports.defineManualTests = function (contentEl, createActionButton) {
     }
 
     const info_div =
-        '<h1>InAppBrowser</h1>' +
+        '<h1>KipiBrowser</h1>' +
         '<div id="info">' +
         'Make sure http://cordova.apache.org and http://google.co.uk and https://www.google.co.uk are white listed. </br>' +
         'Make sure http://www.apple.com is not in the white list.</br>' +
@@ -397,15 +397,15 @@ exports.defineManualTests = function (contentEl, createActionButton) {
         '<p/> <div id="openLocalSystem"></div>' +
         'Expected result: fails to open' +
         '<p/> <div id="openLocalBlank"></div>' +
-        'Expected result: opens successfully in InAppBrowser with locationBar at top.' +
+        'Expected result: opens successfully in KipiBrowser with locationBar at top.' +
         '<p/> <div id="openLocalRandomNoLocation"></div>' +
-        'Expected result: opens successfully in InAppBrowser without locationBar.' +
+        'Expected result: opens successfully in KipiBrowser without locationBar.' +
         '<p/> <div id="openLocalRandomToolBarBottom"></div>' +
-        'Expected result: opens successfully in InAppBrowser with locationBar. On iOS the toolbar is at the bottom.' +
+        'Expected result: opens successfully in KipiBrowser with locationBar. On iOS the toolbar is at the bottom.' +
         '<p/> <div id="openLocalRandomToolBarTop"></div>' +
-        'Expected result: opens successfully in InAppBrowser with locationBar. On iOS the toolbar is at the top.' +
+        'Expected result: opens successfully in KipiBrowser with locationBar. On iOS the toolbar is at the top.' +
         '<p/><div id="openLocalRandomToolBarTopNoLocation"></div>' +
-        'Expected result: open successfully in InAppBrowser with no locationBar. On iOS the toolbar is at the top.';
+        'Expected result: open successfully in KipiBrowser with no locationBar. On iOS the toolbar is at the top.';
 
     const white_listed_tests =
         '<h1>White Listed URL</h1>' +
@@ -418,85 +418,85 @@ exports.defineManualTests = function (contentEl, createActionButton) {
         '<p/> <div id="openWhiteListedSystem"></div>' +
         'Expected result: open successfully in system browser to cordova.apache.org' +
         '<p/> <div id="openWhiteListedBlank"></div>' +
-        'Expected result: open successfully in InAppBrowser to cordova.apache.org' +
+        'Expected result: open successfully in KipiBrowser to cordova.apache.org' +
         '<p/> <div id="openWhiteListedRandom"></div>' +
-        'Expected result: open successfully in InAppBrowser to cordova.apache.org' +
+        'Expected result: open successfully in KipiBrowser to cordova.apache.org' +
         '<p/> <div id="openWhiteListedRandomNoLocation"></div>' +
-        'Expected result: open successfully in InAppBrowser to cordova.apache.org with no location bar.';
+        'Expected result: open successfully in KipiBrowser to cordova.apache.org with no location bar.';
 
     const non_white_listed_tests =
         '<h1>Non White Listed URL</h1>' +
         '<div id="openNonWhiteListed"></div>' +
-        'Expected result: open successfully in InAppBrowser to apple.com.' +
+        'Expected result: open successfully in KipiBrowser to apple.com.' +
         '<p/> <div id="openNonWhiteListedHook"></div>' +
-        'Expected result: open successfully in InAppBrowser to apple.com (using hook of window.open()).' +
+        'Expected result: open successfully in KipiBrowser to apple.com (using hook of window.open()).' +
         '<p/> <div id="openNonWhiteListedSelf"></div>' +
-        'Expected result: open successfully in InAppBrowser to apple.com (_self enforces whitelist).' +
+        'Expected result: open successfully in KipiBrowser to apple.com (_self enforces whitelist).' +
         '<p/> <div id="openNonWhiteListedSystem"></div>' +
         'Expected result: open successfully in system browser to apple.com.' +
         '<p/> <div id="openNonWhiteListedBlank"></div>' +
-        'Expected result: open successfully in InAppBrowser to apple.com.' +
+        'Expected result: open successfully in KipiBrowser to apple.com.' +
         '<p/> <div id="openNonWhiteListedRandom"></div>' +
-        'Expected result: open successfully in InAppBrowser to apple.com.' +
+        'Expected result: open successfully in KipiBrowser to apple.com.' +
         '<p/> <div id="openNonWhiteListedRandomNoLocation"></div>' +
-        'Expected result: open successfully in InAppBrowser to apple.com without locationBar.';
+        'Expected result: open successfully in KipiBrowser to apple.com without locationBar.';
 
     const page_with_redirects_tests =
         '<h1>Page with redirect</h1>' +
         '<div id="openRedirect301"></div>' +
-        'Expected result: should 301 and open successfully in InAppBrowser to https://www.google.co.uk.' +
+        'Expected result: should 301 and open successfully in KipiBrowser to https://www.google.co.uk.' +
         '<p/> <div id="openRedirect302"></div>' +
-        'Expected result: should 302 and open successfully in InAppBrowser to www.zhihu.com/answer/16714076.';
+        'Expected result: should 302 and open successfully in KipiBrowser to www.zhihu.com/answer/16714076.';
 
     const pdf_url_tests =
         '<h1>PDF URL</h1>' +
         '<div id="openPDF"></div>' +
-        'Expected result: InAppBrowser opens. PDF should render on iOS.' +
+        'Expected result: KipiBrowser opens. PDF should render on iOS.' +
         '<p/> <div id="openPDFBlank"></div>' +
-        'Expected result: InAppBrowser opens. PDF should render on iOS.';
+        'Expected result: KipiBrowser opens. PDF should render on iOS.';
 
     const invalid_url_tests =
         '<h1>Invalid URL</h1>' +
         '<div id="openInvalidScheme"></div>' +
-        'Expected result: fail to load in InAppBrowser.' +
+        'Expected result: fail to load in KipiBrowser.' +
         '<p/> <div id="openInvalidHost"></div>' +
-        'Expected result: fail to load in InAppBrowser.' +
+        'Expected result: fail to load in KipiBrowser.' +
         '<p/> <div id="openInvalidMissing"></div>' +
-        'Expected result: fail to load in InAppBrowser (404).';
+        'Expected result: fail to load in KipiBrowser (404).';
 
     const css_js_injection_tests =
         '<h1>CSS / JS Injection</h1>' +
         '<div id="openOriginalDocument"></div>' +
-        'Expected result: open successfully in InAppBrowser without text "Style updated from..."' +
+        'Expected result: open successfully in KipiBrowser without text "Style updated from..."' +
         '<p/> <div id="openCSSInjection"></div>' +
-        'Expected result: open successfully in InAppBrowser with "Style updated from file".' +
+        'Expected result: open successfully in KipiBrowser with "Style updated from file".' +
         '<p/> <div id="openCSSInjectionCallback"></div>' +
-        'Expected result: open successfully in InAppBrowser with "Style updated from file", and alert dialog with text "Results verified".' +
+        'Expected result: open successfully in KipiBrowser with "Style updated from file", and alert dialog with text "Results verified".' +
         '<p/> <div id="openCSSLiteralInjection"></div>' +
-        'Expected result: open successfully in InAppBrowser with "Style updated from literal".' +
+        'Expected result: open successfully in KipiBrowser with "Style updated from literal".' +
         '<p/> <div id="openCSSLiteralInjectionCallback"></div>' +
-        'Expected result: open successfully in InAppBrowser with "Style updated from literal", and alert dialog with text "Results verified".' +
+        'Expected result: open successfully in KipiBrowser with "Style updated from literal", and alert dialog with text "Results verified".' +
         '<p/> <div id="openScriptInjection"></div>' +
-        'Expected result: open successfully in InAppBrowser with text "Script file successfully injected".' +
+        'Expected result: open successfully in KipiBrowser with text "Script file successfully injected".' +
         '<p/> <div id="openScriptInjectionCallback"></div>' +
-        'Expected result: open successfully in InAppBrowser with text "Script file successfully injected" and alert dialog with the text "Results verified".' +
+        'Expected result: open successfully in KipiBrowser with text "Script file successfully injected" and alert dialog with the text "Results verified".' +
         '<p/> <div id="openScriptLiteralInjection"></div>' +
-        'Expected result: open successfully in InAppBrowser with the text "Script literal successfully injected" .' +
+        'Expected result: open successfully in KipiBrowser with the text "Script literal successfully injected" .' +
         '<p/> <div id="openScriptLiteralInjectionCallback"></div>' +
-        'Expected result: open successfully in InAppBrowser with the text "Script literal successfully injected" and alert dialog with the text "Results verified".';
+        'Expected result: open successfully in KipiBrowser with the text "Script literal successfully injected" and alert dialog with the text "Results verified".';
 
     const open_hidden_tests =
         '<h1>Open Hidden </h1>' +
         '<div id="openHidden"></div>' +
         'Expected result: no additional browser window. Alert appears with the text "background window loaded".' +
         '<p/> <div id="showHidden"></div>' +
-        'Expected result: after first clicking on previous test "create hidden", open successfully in InAppBrowser to https://www.google.co.uk.' +
+        'Expected result: after first clicking on previous test "create hidden", open successfully in KipiBrowser to https://www.google.co.uk.' +
         '<p/> <div id="closeHidden"></div>' +
         'Expected result: no output. But click on "show hidden" again and nothing should be shown.' +
         '<p/> <div id="openHiddenShow"></div>' +
-        'Expected result: open successfully in InAppBrowser to https://www.google.co.uk' +
+        'Expected result: open successfully in KipiBrowser to https://www.google.co.uk' +
         '<p/> <div id="openVisibleAndHide"></div>' +
-        'Expected result: open successfully in InAppBrowser to https://www.google.co.uk. Hide after 2 seconds';
+        'Expected result: open successfully in KipiBrowser to https://www.google.co.uk. Hide after 2 seconds';
 
     const clearing_cache_tests =
         '<h1>Clearing Cache</h1>' +
@@ -508,29 +508,29 @@ exports.defineManualTests = function (contentEl, createActionButton) {
     const video_tag_tests =
         '<h1>Video tag</h1>' +
         '<div id="openRemoteVideo"></div>' +
-        'Expected result: open successfully in InAppBrowser with an embedded video plays automatically on iOS and Android.' +
+        'Expected result: open successfully in KipiBrowser with an embedded video plays automatically on iOS and Android.' +
         '<div id="openRemoteNeedUserNoVideo"></div>' +
-        'Expected result: open successfully in InAppBrowser with an embedded video plays automatically on iOS and Android.' +
+        'Expected result: open successfully in KipiBrowser with an embedded video plays automatically on iOS and Android.' +
         '<div id="openRemoteNeedUserYesVideo"></div>' +
-        'Expected result: open successfully in InAppBrowser with an embedded video does not play automatically on iOS and Android but rather works after clicking the "play" button.';
+        'Expected result: open successfully in KipiBrowser with an embedded video does not play automatically on iOS and Android but rather works after clicking the "play" button.';
 
     const local_with_anchor_tag_tests =
         '<h1>Local with anchor tag</h1>' +
         '<div id="openAnchor1"></div>' +
-        'Expected result: open successfully in InAppBrowser to the local page, scrolled to the top as normal.' +
+        'Expected result: open successfully in KipiBrowser to the local page, scrolled to the top as normal.' +
         '<p/> <div id="openAnchor2"></div>' +
-        'Expected result: open successfully in InAppBrowser to the local page, scrolled to the beginning of the tall div with border.';
+        'Expected result: open successfully in KipiBrowser to the local page, scrolled to the beginning of the tall div with border.';
 
     const hardwareback_tests =
         '<h1>HardwareBack</h1>' +
         '<p/> <div id="openHardwareBackDefault"></div>' +
-        'Expected result: By default hardwareback is yes so pressing back button should navigate backwards in history then close InAppBrowser' +
+        'Expected result: By default hardwareback is yes so pressing back button should navigate backwards in history then close KipiBrowser' +
         '<p/> <div id="openHardwareBackYes"></div>' +
-        'Expected result: hardwareback=yes pressing back button should navigate backwards in history then close InAppBrowser' +
+        'Expected result: hardwareback=yes pressing back button should navigate backwards in history then close KipiBrowser' +
         '<p/> <div id="openHardwareBackNo"></div>' +
-        'Expected result: hardwareback=no pressing back button should close InAppBrowser regardless history' +
+        'Expected result: hardwareback=no pressing back button should close KipiBrowser regardless history' +
         '<p/> <div id="openHardwareBackDefaultAfterNo"></div>' +
-        'Expected result: consistently open browsers with with the appropriate option: hardwareback=defaults to yes then hardwareback=no then hardwareback=defaults to yes. By default hardwareback is yes so pressing back button should navigate backwards in history then close InAppBrowser';
+        'Expected result: consistently open browsers with with the appropriate option: hardwareback=defaults to yes then hardwareback=no then hardwareback=defaults to yes. By default hardwareback is yes so pressing back button should navigate backwards in history then close KipiBrowser';
 
     contentEl.innerHTML =
         info_div +
@@ -966,12 +966,12 @@ exports.defineManualTests = function (contentEl, createActionButton) {
     createActionButton(
         'no hardwareback -> hardwareback=no -> no hardwareback',
         function () {
-            const ref = cordova.InAppBrowser.open('https://google.com', '_blank', 'location=yes' + (platformOpts ? ',' + platformOpts : ''));
+            const ref = cordova.KipiBrowser.open('https://google.com', '_blank', 'location=yes' + (platformOpts ? ',' + platformOpts : ''));
             ref.addEventListener('loadstop', function () {
                 ref.close();
             });
             ref.addEventListener('exit', function () {
-                const ref2 = cordova.InAppBrowser.open(
+                const ref2 = cordova.KipiBrowser.open(
                     'https://google.com',
                     '_blank',
                     'location=yes,hardwareback=no' + (platformOpts ? ',' + platformOpts : '')
@@ -980,7 +980,7 @@ exports.defineManualTests = function (contentEl, createActionButton) {
                     ref2.close();
                 });
                 ref2.addEventListener('exit', function () {
-                    cordova.InAppBrowser.open('https://google.com', '_blank', 'location=yes' + (platformOpts ? ',' + platformOpts : ''));
+                    cordova.KipiBrowser.open('https://google.com', '_blank', 'location=yes' + (platformOpts ? ',' + platformOpts : ''));
                 });
             });
         },

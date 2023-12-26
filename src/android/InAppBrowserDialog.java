@@ -28,16 +28,16 @@ import org.json.JSONObject;
 /**
  * Created by Oliver on 22/11/2013.
  */
-public class InAppBrowserDialog extends Dialog {
+public class KipiBrowserDialog extends Dialog {
     Context context;
-    InAppBrowser inAppBrowser = null;
+    KipiBrowser inAppBrowser = null;
 
-    public InAppBrowserDialog(Context context, int theme) {
+    public KipiBrowserDialog(Context context, int theme) {
         super(context, theme);
         this.context = context;
     }
 
-    public void setInAppBroswer(InAppBrowser browser) {
+    public void setInAppBroswer(KipiBrowser browser) {
         this.inAppBrowser = browser;
     }
 

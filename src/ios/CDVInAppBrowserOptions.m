@@ -17,9 +17,9 @@
  under the License.
  */
 
-#import "CDVInAppBrowserOptions.h"
+#import "CDVKipiBrowserOptions.h"
 
-@implementation CDVInAppBrowserOptions
+@implementation CDVKipiBrowserOptions
 
 - (id)init
 {
@@ -50,9 +50,9 @@
     return self;
 }
 
-+ (CDVInAppBrowserOptions*)parseOptions:(NSString*)options
++ (CDVKipiBrowserOptions*)parseOptions:(NSString*)options
 {
-    CDVInAppBrowserOptions* obj = [[CDVInAppBrowserOptions alloc] init];
+    CDVKipiBrowserOptions* obj = [[CDVKipiBrowserOptions alloc] init];
 
     // NOTE: this parsing does not handle quotes within values
     NSArray* pairs = [options componentsSeparatedByString:@","];

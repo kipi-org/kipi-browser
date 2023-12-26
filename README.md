@@ -22,83 +22,83 @@ description: Open an in-app browser window.
 -->
 
 
-# cordova-plugin-inappbrowser
+# cordova-plugin-kipibrowser
 
-[![Android Testsuite](https://github.com/apache/cordova-plugin-inappbrowser/actions/workflows/android.yml/badge.svg)](https://github.com/apache/cordova-plugin-inappbrowser/actions/workflows/android.yml) [![Chrome Testsuite](https://github.com/apache/cordova-plugin-inappbrowser/actions/workflows/chrome.yml/badge.svg)](https://github.com/apache/cordova-plugin-inappbrowser/actions/workflows/chrome.yml) [![iOS Testsuite](https://github.com/apache/cordova-plugin-inappbrowser/actions/workflows/ios.yml/badge.svg)](https://github.com/apache/cordova-plugin-inappbrowser/actions/workflows/ios.yml) [![Lint Test](https://github.com/apache/cordova-plugin-inappbrowser/actions/workflows/lint.yml/badge.svg)](https://github.com/apache/cordova-plugin-inappbrowser/actions/workflows/lint.yml)
+[![Android Testsuite](https://github.com/apache/cordova-plugin-kipibrowser/actions/workflows/android.yml/badge.svg)](https://github.com/apache/cordova-plugin-kipibrowser/actions/workflows/android.yml) [![Chrome Testsuite](https://github.com/apache/cordova-plugin-kipibrowser/actions/workflows/chrome.yml/badge.svg)](https://github.com/apache/cordova-plugin-kipibrowser/actions/workflows/chrome.yml) [![iOS Testsuite](https://github.com/apache/cordova-plugin-kipibrowser/actions/workflows/ios.yml/badge.svg)](https://github.com/apache/cordova-plugin-kipibrowser/actions/workflows/ios.yml) [![Lint Test](https://github.com/apache/cordova-plugin-kipibrowser/actions/workflows/lint.yml/badge.svg)](https://github.com/apache/cordova-plugin-kipibrowser/actions/workflows/lint.yml)
 
 You can show helpful articles, videos, and web resources inside of your app. Users can view web pages without leaving your app.
 
 > To get a few ideas, check out the [sample](#sample) at the bottom of this page or go straight to the [reference](#reference) content.
 
-This plugin provides a web browser view that displays when calling `cordova.InAppBrowser.open()`.
+This plugin provides a web browser view that displays when calling `cordova.KipiBrowser.open()`.
 
-    var ref = cordova.InAppBrowser.open('https://apache.org', '_blank', 'location=yes');
+    var ref = cordova.KipiBrowser.open('https://apache.org', '_blank', 'location=yes');
 
 ### `window.open`
 
-The `cordova.InAppBrowser.open()` function is defined to be a drop-in replacement
+The `cordova.KipiBrowser.open()` function is defined to be a drop-in replacement
 for the `window.open()` function.  Existing `window.open()` calls can use the
-InAppBrowser window, by replacing window.open:
+KipiBrowser window, by replacing window.open:
 
-    window.open = cordova.InAppBrowser.open;
+    window.open = cordova.KipiBrowser.open;
 
 If you change the browsers `window.open` function this way, it can have unintended side
 effects (especially if this plugin is included only as a dependency of another
 plugin).
 
-The InAppBrowser window behaves like a standard web browser,
-and can't access Cordova APIs. For this reason, the InAppBrowser is recommended
+The KipiBrowser window behaves like a standard web browser,
+and can't access Cordova APIs. For this reason, the KipiBrowser is recommended
 if you need to load third-party (untrusted) content, instead of loading that
-into the main Cordova webview. The InAppBrowser is not subject to the
+into the main Cordova webview. The KipiBrowser is not subject to the
 whitelist, nor is opening links in the system browser.
 
-The InAppBrowser provides by default its own GUI controls for the user (back,
+The KipiBrowser provides by default its own GUI controls for the user (back,
 forward, done).
 
 ## Installation
 
-    cordova plugin add cordova-plugin-inappbrowser
+    cordova plugin add cordova-plugin-kipibrowser
 
-If you want all page loads in your app to go through the InAppBrowser, you can
+If you want all page loads in your app to go through the KipiBrowser, you can
 simply hook `window.open` during initialization.  For example:
 
     document.addEventListener("deviceready", onDeviceReady, false);
     function onDeviceReady() {
-        window.open = cordova.InAppBrowser.open;
+        window.open = cordova.KipiBrowser.open;
     }
 
 ### Preferences
 
 #### <b>config.xml</b>
-- <b>InAppBrowserStatusBarStyle [iOS only]</b>: (string, options 'lightcontent', 'darkcontent' or 'default'. Defaults to 'default') set text color style for iOS. 'lightcontent' is intended for use on dark backgrounds. 'darkcontent' is only available since iOS 13 and intended for use on light backgrounds.
+- <b>KipiBrowserStatusBarStyle [iOS only]</b>: (string, options 'lightcontent', 'darkcontent' or 'default'. Defaults to 'default') set text color style for iOS. 'lightcontent' is intended for use on dark backgrounds. 'darkcontent' is only available since iOS 13 and intended for use on light backgrounds.
 ```xml
-<preference name="InAppBrowserStatusBarStyle" value="lightcontent" />
+<preference name="KipiBrowserStatusBarStyle" value="lightcontent" />
 ```
 
-## cordova.InAppBrowser.open
+## cordova.KipiBrowser.open
 
-Opens a URL in a new `InAppBrowser` instance, the current browser
+Opens a URL in a new `KipiBrowser` instance, the current browser
 instance, or the system browser.
 
-    var ref = cordova.InAppBrowser.open(url, target, options);
+    var ref = cordova.KipiBrowser.open(url, target, options);
 
-- __ref__: Reference to the `InAppBrowser` window when the target is set to `'_blank'`. _(InAppBrowser)_
+- __ref__: Reference to the `KipiBrowser` window when the target is set to `'_blank'`. _(KipiBrowser)_
 
 - __url__: The URL to load _(String)_. Call `encodeURI()` on this if the URL contains Unicode characters.
 
 - __target__: The target in which to load the URL, an optional parameter that defaults to `_self`. _(String)_
 
-    - `_self`: Opens in the Cordova WebView if the URL is in the white list, otherwise it opens in the `InAppBrowser`.
-    - `_blank`: Opens in the `InAppBrowser`.
+    - `_self`: Opens in the Cordova WebView if the URL is in the white list, otherwise it opens in the `KipiBrowser`.
+    - `_blank`: Opens in the `KipiBrowser`.
     - `_system`: Opens in the system's web browser.
 
-- __options__: Options for the `InAppBrowser`. Optional, defaulting to: `location=yes`. _(String)_
+- __options__: Options for the `KipiBrowser`. Optional, defaulting to: `location=yes`. _(String)_
 
     The `options` string must not contain any blank space, and each feature's name/value pairs must be separated by a comma. Feature names are case insensitive.
 
     All platforms support:
 
-    - __location__: Set to `yes` or `no` to turn the `InAppBrowser`'s location bar on or off.
+    - __location__: Set to `yes` or `no` to turn the `KipiBrowser`'s location bar on or off.
 
     Android supports these additional options:
 
@@ -113,7 +113,7 @@ instance, or the system browser.
     The close button will appear the same as for the header hence use __closebuttoncaption__ and __closebuttoncolor__ to set its properties.
     - __footercolor__: set to a valid hex color string, for example `#00ff00` or `#CC00ff00` (`#aarrggbb`) , and it will change the footer color from default.
     Only has effect if user has __footer__ set to `yes`.
-    - __hardwareback__: set to `yes` to use the hardware back button to navigate backwards through the `InAppBrowser`'s history. If there is no previous page, the `InAppBrowser` will close.  The default value is `yes`, so you must set it to `no` if you want the back button to simply close the InAppBrowser.
+    - __hardwareback__: set to `yes` to use the hardware back button to navigate backwards through the `KipiBrowser`'s history. If there is no previous page, the `KipiBrowser` will close.  The default value is `yes`, so you must set it to `no` if you want the back button to simply close the KipiBrowser.
     - __hidenavigationbuttons__: set to `yes` to hide the navigation buttons on the location toolbar, only has effect if user has location set to `yes`. The default value is `no`.
     - __hideurlbar__: set to `yes` to hide the url bar on the location toolbar, only has effect if user has location set to `yes`. The default value is `no`.
     - __navigationbuttoncolor__: set to a valid hex color string, for example: `#00ff00`, and it will change the color of both navigation buttons from default. Only has effect if user has location set to `yes` and not hidenavigationbuttons set to `yes`.
@@ -121,7 +121,7 @@ instance, or the system browser.
     - __lefttoright__: Set to `yes` to swap positions of the navigation buttons and the close button. Specifically, navigation buttons go to the right and close button to the left. Default value is `no`.
     - __zoom__: set to `yes` to show Android browser's zoom controls, set to `no` to hide them.  Default value is `yes`.
     - __mediaPlaybackRequiresUserAction__: Set to `yes` to prevent HTML5 audio or video from autoplaying (defaults to `no`).
-    - __shouldPauseOnSuspend__: Set to `yes` to make InAppBrowser WebView to pause/resume with the app to stop background audio (this may be required to avoid Google Play issues like described in [CB-11013](https://issues.apache.org/jira/browse/CB-11013)).
+    - __shouldPauseOnSuspend__: Set to `yes` to make KipiBrowser WebView to pause/resume with the app to stop background audio (this may be required to avoid Google Play issues like described in [CB-11013](https://issues.apache.org/jira/browse/CB-11013)).
     - __useWideViewPort__: Sets whether the WebView should enable support for the "viewport" HTML meta tag or should use a wide viewport. When the value of the setting is `no`, the layout width is always set to the width of the WebView control in device-independent (CSS) pixels. When the value is `yes` and the page contains the viewport meta tag, the value of the width specified in the tag is used. If the page does not contain the tag or does not provide a width, then a wide viewport will be used. (defaults to `yes`).
     - __fullscreen__: Sets whether the InappBrowser WebView is displayed fullscreen or not. In fullscreen mode, the status bar is hidden. Default value is `yes`.
 
@@ -137,7 +137,7 @@ instance, or the system browser.
     - __disallowoverscroll__: Set to `yes` or `no` (default is `no`). Turns on/off the the bounce of the WKWebView's UIScrollView.
     - __hidenavigationbuttons__:  set to `yes` or `no` to turn the toolbar navigation buttons on or off (defaults to `no`). Only applicable if toolbar is not disabled.
     - __navigationbuttoncolor__:  set as a valid hex color string, for example: `#00ff00`, to change from the default color. Only applicable if navigation buttons are visible.
-    - __toolbar__:  set to `yes` or `no` to turn the toolbar on or off for the InAppBrowser (defaults to `yes`)
+    - __toolbar__:  set to `yes` or `no` to turn the toolbar on or off for the KipiBrowser (defaults to `yes`)
     - __toolbarcolor__: set as a valid hex color string, for example: `#00ff00`, to change from the default color of the toolbar. Only applicable if toolbar is not disabled.
     - __toolbartranslucent__:  set to `yes` or `no` to make the toolbar translucent(semi-transparent)  (defaults to `yes`). Only applicable if toolbar is not disabled.
     - __lefttoright__: Set to `yes` to swap positions of the navigation buttons and the close button. Specifically, close button goes to the right and navigation buttons to the left.
@@ -158,8 +158,8 @@ instance, or the system browser.
 
 ### Example
 
-    var ref = cordova.InAppBrowser.open('https://apache.org', '_blank', 'location=yes');
-    var ref2 = cordova.InAppBrowser.open(encodeURI('http://ja.m.wikipedia.org/wiki/ハングル'), '_blank', 'location=yes');
+    var ref = cordova.KipiBrowser.open('https://apache.org', '_blank', 'location=yes');
+    var ref2 = cordova.KipiBrowser.open(encodeURI('http://ja.m.wikipedia.org/wiki/ハングル'), '_blank', 'location=yes');
 
 ### OSX Quirks
 
@@ -183,9 +183,9 @@ The example above forces the user agent to contain `iPad`. The other option is t
 
 - Navigation history (`back` and `forward` buttons in LocationBar) is not implemented.
 
-## InAppBrowser
+## KipiBrowser
 
-The object returned from a call to `cordova.InAppBrowser.open` when the target is set to `'_blank'`.
+The object returned from a call to `cordova.KipiBrowser.open` when the target is set to `'_blank'`.
 
 ### Methods
 
@@ -197,25 +197,25 @@ The object returned from a call to `cordova.InAppBrowser.open` when the target i
 - executeScript
 - insertCSS
 
-## InAppBrowser.addEventListener
+## KipiBrowser.addEventListener
 
-> Adds a listener for an event from the `InAppBrowser`. (Only available when the target is set to `'_blank'`)
+> Adds a listener for an event from the `KipiBrowser`. (Only available when the target is set to `'_blank'`)
 
     ref.addEventListener(eventname, callback);
 
-- __ref__: reference to the `InAppBrowser` window _(InAppBrowser)_
+- __ref__: reference to the `KipiBrowser` window _(KipiBrowser)_
 
 - __eventname__: the event to listen for _(String)_
 
-  - __loadstart__: event fires when the `InAppBrowser` starts to load a URL.
-  - __loadstop__: event fires when the `InAppBrowser` finishes loading a URL.
-  - __loaderror__: event fires when the `InAppBrowser` encounters an error when loading a URL.
-  - __exit__: event fires when the `InAppBrowser` window is closed.
-  - __beforeload__: event fires when the `InAppBrowser` decides whether to load an URL or not (only with option `beforeload` set).
-  - __message__: event fires when the `InAppBrowser` receives a message posted from the page loaded inside the `InAppBrowser` Webview.
-  - __download__: _(Android Only)_ event fires when the `InAppBrowser` loads a URL that leads in downloading of a file.
+  - __loadstart__: event fires when the `KipiBrowser` starts to load a URL.
+  - __loadstop__: event fires when the `KipiBrowser` finishes loading a URL.
+  - __loaderror__: event fires when the `KipiBrowser` encounters an error when loading a URL.
+  - __exit__: event fires when the `KipiBrowser` window is closed.
+  - __beforeload__: event fires when the `KipiBrowser` decides whether to load an URL or not (only with option `beforeload` set).
+  - __message__: event fires when the `KipiBrowser` receives a message posted from the page loaded inside the `KipiBrowser` Webview.
+  - __download__: _(Android Only)_ event fires when the `KipiBrowser` loads a URL that leads in downloading of a file.
 
-- __callback__: the function that executes when the event fires. The function is passed an `InAppBrowserEvent` object as a parameter.
+- __callback__: the function that executes when the event fires. The function is passed an `KipiBrowserEvent` object as a parameter.
 
 ## Example
 
@@ -229,7 +229,7 @@ function showHelp(url) {
 
     var options = "location=yes,hidden=yes,beforeload=yes";
 
-    inAppBrowserRef = cordova.InAppBrowser.open(url, target, options);
+    inAppBrowserRef = cordova.KipiBrowser.open(url, target, options);
 
     inAppBrowserRef.addEventListener('loadstart', loadStartCallBack);
 
@@ -316,7 +316,7 @@ function messageCallBack(params){
 ```
 #### Download event Example
 
-Whenever the InAppBrowser receives or locates to a url which leads in downloading a file, the callback assigned to the "download" event is called. The parameter passed to this callback is an object with the the following properties
+Whenever the KipiBrowser receives or locates to a url which leads in downloading a file, the callback assigned to the "download" event is called. The parameter passed to this callback is an object with the the following properties
 
 - **type** _it contains the String value "download" always_
 - **url** _The url that leaded to the downloading of file. Basically, the download link of file_
@@ -343,7 +343,7 @@ function downloadListener(params){
 ```
 
 
-### InAppBrowserEvent Properties
+### KipiBrowserEvent Properties
 
 - __type__: the eventname, either `loadstart`, `loadstop`, `loaderror`, `message` or `exit`. _(String)_
 - __url__: the URL that was loaded. _(String)_
@@ -363,28 +363,28 @@ function downloadListener(params){
 
 ### Quick Example
 
-    var ref = cordova.InAppBrowser.open('https://apache.org', '_blank', 'location=yes');
+    var ref = cordova.KipiBrowser.open('https://apache.org', '_blank', 'location=yes');
     ref.addEventListener('loadstart', function(event) { alert(event.url); });
 
-## InAppBrowser.removeEventListener
+## KipiBrowser.removeEventListener
 
-> Removes a listener for an event from the `InAppBrowser`. (Only available when the target is set to `'_blank'`)
+> Removes a listener for an event from the `KipiBrowser`. (Only available when the target is set to `'_blank'`)
 
     ref.removeEventListener(eventname, callback);
 
-- __ref__: reference to the `InAppBrowser` window. _(InAppBrowser)_
+- __ref__: reference to the `KipiBrowser` window. _(KipiBrowser)_
 
 - __eventname__: the event to stop listening for. _(String)_
 
-  - __loadstart__: event fires when the `InAppBrowser` starts to load a URL.
-  - __loadstop__: event fires when the `InAppBrowser` finishes loading a URL.
-  - __loaderror__: event fires when the `InAppBrowser` encounters an error loading a URL.
-  - __exit__: event fires when the `InAppBrowser` window is closed.
-  - __message__: event fires when the `InAppBrowser` receives a message posted from the page loaded inside the `InAppBrowser` Webview.
-  - __download__: _(Android only)_ event fires when the `InAppBrowser` loads a URL that leads in downloading of a file.
+  - __loadstart__: event fires when the `KipiBrowser` starts to load a URL.
+  - __loadstop__: event fires when the `KipiBrowser` finishes loading a URL.
+  - __loaderror__: event fires when the `KipiBrowser` encounters an error loading a URL.
+  - __exit__: event fires when the `KipiBrowser` window is closed.
+  - __message__: event fires when the `KipiBrowser` receives a message posted from the page loaded inside the `KipiBrowser` Webview.
+  - __download__: _(Android only)_ event fires when the `KipiBrowser` loads a URL that leads in downloading of a file.
 
 - __callback__: the function to execute when the event fires.
-The function is passed an `InAppBrowserEvent` object.
+The function is passed an `KipiBrowserEvent` object.
 
 ### Supported Platforms
 
@@ -394,18 +394,18 @@ The function is passed an `InAppBrowserEvent` object.
 
 ### Quick Example
 
-    var ref = cordova.InAppBrowser.open('https://apache.org', '_blank', 'location=yes');
+    var ref = cordova.KipiBrowser.open('https://apache.org', '_blank', 'location=yes');
     var myCallback = function(event) { alert(event.url); }
     ref.addEventListener('loadstart', myCallback);
     ref.removeEventListener('loadstart', myCallback);
 
-## InAppBrowser.close
+## KipiBrowser.close
 
-> Closes the `InAppBrowser` window.
+> Closes the `KipiBrowser` window.
 
     ref.close();
 
-- __ref__: reference to the `InAppBrowser` window _(InAppBrowser)_
+- __ref__: reference to the `KipiBrowser` window _(KipiBrowser)_
 
 ### Supported Platforms
 
@@ -415,16 +415,16 @@ The function is passed an `InAppBrowserEvent` object.
 
 ### Quick Example
 
-    var ref = cordova.InAppBrowser.open('https://apache.org', '_blank', 'location=yes');
+    var ref = cordova.KipiBrowser.open('https://apache.org', '_blank', 'location=yes');
     ref.close();
 
-## InAppBrowser.show
+## KipiBrowser.show
 
-> Displays an InAppBrowser window that was opened hidden. Calling this has no effect if the InAppBrowser was already visible.
+> Displays an KipiBrowser window that was opened hidden. Calling this has no effect if the KipiBrowser was already visible.
 
     ref.show();
 
-- __ref__: reference to the InAppBrowser window (`InAppBrowser`)
+- __ref__: reference to the KipiBrowser window (`KipiBrowser`)
 
 ### Supported Platforms
 
@@ -434,17 +434,17 @@ The function is passed an `InAppBrowserEvent` object.
 
 ### Quick Example
 
-    var ref = cordova.InAppBrowser.open('https://apache.org', '_blank', 'hidden=yes');
+    var ref = cordova.KipiBrowser.open('https://apache.org', '_blank', 'hidden=yes');
     // some time later...
     ref.show();
 
-## InAppBrowser.hide
+## KipiBrowser.hide
 
-> Hides the InAppBrowser window. Calling this has no effect if the InAppBrowser was already hidden.
+> Hides the KipiBrowser window. Calling this has no effect if the KipiBrowser was already hidden.
 
     ref.hide();
 
-- __ref__: reference to the InAppBrowser window (`InAppBrowser`)
+- __ref__: reference to the KipiBrowser window (`KipiBrowser`)
 
 ### Supported Platforms
 
@@ -453,17 +453,17 @@ The function is passed an `InAppBrowserEvent` object.
 
 ### Quick Example
 
-    var ref = cordova.InAppBrowser.open('https://apache.org', '_blank');
+    var ref = cordova.KipiBrowser.open('https://apache.org', '_blank');
     // some time later...
     ref.hide();
 
-## InAppBrowser.executeScript
+## KipiBrowser.executeScript
 
-> Injects JavaScript code into the `InAppBrowser` window. (Only available when the target is set to `'_blank'`)
+> Injects JavaScript code into the `KipiBrowser` window. (Only available when the target is set to `'_blank'`)
 
     ref.executeScript(details, callback);
 
-- __ref__: reference to the `InAppBrowser` window. _(InAppBrowser)_
+- __ref__: reference to the `KipiBrowser` window. _(KipiBrowser)_
 
 - __injectDetails__: details of the script to run, specifying either a `file` or `code` key. _(Object)_
   - __file__: URL of the script to inject.
@@ -484,7 +484,7 @@ The function is passed an `InAppBrowserEvent` object.
 
 ### Quick Example
 
-    var ref = cordova.InAppBrowser.open('https://apache.org', '_blank', 'location=yes');
+    var ref = cordova.KipiBrowser.open('https://apache.org', '_blank', 'location=yes');
     ref.addEventListener('loadstop', function() {
         ref.executeScript({file: "myscript.js"});
     });
@@ -493,13 +493,13 @@ The function is passed an `InAppBrowserEvent` object.
 
 - only __code__ key is supported.
 
-## InAppBrowser.insertCSS
+## KipiBrowser.insertCSS
 
-> Injects CSS into the `InAppBrowser` window. (Only available when the target is set to `'_blank'`)
+> Injects CSS into the `KipiBrowser` window. (Only available when the target is set to `'_blank'`)
 
     ref.insertCSS(details, callback);
 
-- __ref__: reference to the `InAppBrowser` window _(InAppBrowser)_
+- __ref__: reference to the `KipiBrowser` window _(KipiBrowser)_
 
 - __injectDetails__: details of the script to run, specifying either a `file` or `code` key. _(Object)_
   - __file__: URL of the stylesheet to inject.
@@ -514,13 +514,13 @@ The function is passed an `InAppBrowserEvent` object.
 
 ### Quick Example
 
-    var ref = cordova.InAppBrowser.open('https://apache.org', '_blank', 'location=yes');
+    var ref = cordova.KipiBrowser.open('https://apache.org', '_blank', 'location=yes');
     ref.addEventListener('loadstop', function() {
         ref.insertCSS({file: "mystyles.css"});
     });
 __
 
-## <a id="sample"></a>Sample: Show help pages with an InAppBrowser
+## <a id="sample"></a>Sample: Show help pages with an KipiBrowser
 
 You can use this plugin to show helpful documentation pages within your app. Users can view online help documents and then close them without leaving the app.
 
@@ -559,7 +559,7 @@ $('#help-select').on('change', function (e) {
 
         case "article":
             url = "https://cordova.apache.org/docs/en/latest/"
-                        + "reference/cordova-plugin-inappbrowser/index.html";
+                        + "reference/cordova-plugin-kipibrowser/index.html";
             break;
 
         case "video":
@@ -589,7 +589,7 @@ function showHelp(url) {
 
     var options = "location=yes,hidden=yes";
 
-    inAppBrowserRef = cordova.InAppBrowser.open(url, target, options);
+    inAppBrowserRef = cordova.KipiBrowser.open(url, target, options);
 
     inAppBrowserRef.addEventListener('loadstart', loadStartCallBack);
 
@@ -678,14 +678,14 @@ function executeScriptCallBack(params) {
 
 ### Local Urls ( source is in the app package )
 ```
-var iab = cordova.InAppBrowser;
+var iab = cordova.KipiBrowser;
 
 iab.open('local-url.html');                  // loads in the Cordova WebView
 iab.open('local-url.html', '_self');         // loads in the Cordova WebView
 iab.open('local-url.html', '_system');       // Security error: system browser, but url will not load (iOS)
-iab.open('local-url.html', '_blank');        // loads in the InAppBrowser
-iab.open('local-url.html', 'random_string'); // loads in the InAppBrowser
-iab.open('local-url.html', 'random_string', 'location=no'); // loads in the InAppBrowser, no location bar
+iab.open('local-url.html', '_blank');        // loads in the KipiBrowser
+iab.open('local-url.html', 'random_string'); // loads in the KipiBrowser
+iab.open('local-url.html', 'random_string', 'location=no'); // loads in the KipiBrowser, no location bar
 
 ```
 
@@ -694,28 +694,28 @@ iab.open('local-url.html', 'random_string', 'location=no'); // loads in the InAp
 ### Whitelisted Content
 
 ```
-var iab = cordova.InAppBrowser;
+var iab = cordova.KipiBrowser;
 
 iab.open('https://whitelisted-url.com');                  // loads in the Cordova WebView
 iab.open('https://whitelisted-url.com', '_self');         // loads in the Cordova WebView
 iab.open('https://whitelisted-url.com', '_system');       // loads in the system browser
-iab.open('https://whitelisted-url.com', '_blank');        // loads in the InAppBrowser
-iab.open('https://whitelisted-url.com', 'random_string'); // loads in the InAppBrowser
+iab.open('https://whitelisted-url.com', '_blank');        // loads in the KipiBrowser
+iab.open('https://whitelisted-url.com', 'random_string'); // loads in the KipiBrowser
 
-iab.open('https://whitelisted-url.com', 'random_string', 'location=no'); // loads in the InAppBrowser, no location bar
+iab.open('https://whitelisted-url.com', 'random_string', 'location=no'); // loads in the KipiBrowser, no location bar
 
 ```
 
 ### Urls that are not white-listed
 
 ```
-var iab = cordova.InAppBrowser;
+var iab = cordova.KipiBrowser;
 
-iab.open('https://url-that-fails-whitelist.com');                  // loads in the InAppBrowser
-iab.open('https://url-that-fails-whitelist.com', '_self');         // loads in the InAppBrowser
+iab.open('https://url-that-fails-whitelist.com');                  // loads in the KipiBrowser
+iab.open('https://url-that-fails-whitelist.com', '_self');         // loads in the KipiBrowser
 iab.open('https://url-that-fails-whitelist.com', '_system');       // loads in the system browser
-iab.open('https://url-that-fails-whitelist.com', '_blank');        // loads in the InAppBrowser
-iab.open('https://url-that-fails-whitelist.com', 'random_string'); // loads in the InAppBrowser
-iab.open('https://url-that-fails-whitelist.com', 'random_string', 'location=no'); // loads in the InAppBrowser, no location bar
+iab.open('https://url-that-fails-whitelist.com', '_blank');        // loads in the KipiBrowser
+iab.open('https://url-that-fails-whitelist.com', 'random_string'); // loads in the KipiBrowser
+iab.open('https://url-that-fails-whitelist.com', 'random_string', 'location=no'); // loads in the KipiBrowser, no location bar
 
 ```
