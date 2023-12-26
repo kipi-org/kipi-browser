@@ -124,6 +124,7 @@
         strWindowFeatures = strWindowFeatures || '';
 
         exec(cb, cb, 'InAppBrowser', 'open', [strUrl, strWindowName, strWindowFeatures]);
+        console.log("OPEN")
         return iab;
     };
 })();

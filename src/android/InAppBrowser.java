@@ -161,6 +161,8 @@ public class InAppBrowser extends CordovaPlugin {
      * @return A PluginResult object with a status and message.
      */
     public boolean execute(String action, CordovaArgs args, final CallbackContext callbackContext) throws JSONException {
+        LOG.d("Tag", "ACTION: " + action);
+
         if (action.equals("open")) {
             this.callbackContext = callbackContext;
             final String url = args.getString(0);
