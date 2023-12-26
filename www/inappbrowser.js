@@ -97,6 +97,7 @@
         },
 
         dispatchKeyEvent(key) {
+            console.log("KEY PISPATCHED!!")
             exec(null, null, 'InAppBrowser', 'dispatchKeyEvent', [key]);
         },
     };
