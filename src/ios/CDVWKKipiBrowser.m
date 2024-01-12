@@ -60,13 +60,13 @@ static CDVWKKipiBrowser* instance = nil;
 
 - (void)close:(CDVInvokedUrlCommand*)command
 {
-    if (self.inAppBrowserViewController == nil) {
+    if (self.kipiBrowserViewController == nil) {
         NSLog(@"IAB.close() called but it was already closed.");
         return;
     }
 
     // Things are cleaned up in browserExit.
-    [self.inAppBrowserViewController close];
+    [self.kipiBrowserViewController close];
 }
 
 - (BOOL) isSystemUrl:(NSURL*)url
@@ -123,7 +123,7 @@ static CDVWKKipiBrowser* instance = nil;
         NSDate* dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
         [dataStore removeDataOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] modifiedSince:dateFrom completionHandler:^{
             NSLog(@"Removed all WKWebView data");
-            self.inAppBrowserViewController.webView.configuration.processPool = [[WKProcessPool alloc] init]; // create new process pool to flush all data
+            self.kipiBrowserViewController.webView.configuration.processPool = [[WKProcessPool alloc] init]; // create new process pool to flush all data
         }];
     }
 
@@ -151,20 +151,20 @@ static CDVWKKipiBrowser* instance = nil;
         }];
     }
 
-    if (self.inAppBrowserViewController == nil) {
-        self.inAppBrowserViewController = [[CDVWKKipiBrowserViewController alloc] initWithBrowserOptions: browserOptions andSettings:self.commandDelegate.settings];
-        self.inAppBrowserViewController.navigationDelegate = self;
+    if (self.kipiBrowserViewController == nil) {
+        self.kipiBrowserViewController = [[CDVWKKipiBrowserViewController alloc] initWithBrowserOptions: browserOptions andSettings:self.commandDelegate.settings];
+        self.kipiBrowserViewController.navigationDelegate = self;
 
         if ([self.viewController conformsToProtocol:@protocol(CDVScreenOrientationDelegate)]) {
-            self.inAppBrowserViewController.orientationDelegate = (UIViewController <CDVScreenOrientationDelegate>*)self.viewController;
+            self.kipiBrowserViewController.orientationDelegate = (UIViewController <CDVScreenOrientationDelegate>*)self.viewController;
         }
     }
 
-    [self.inAppBrowserViewController showLocationBar:browserOptions.location];
-    [self.inAppBrowserViewController showToolBar:browserOptions.toolbar :browserOptions.toolbarposition];
+    [self.kipiBrowserViewController showLocationBar:browserOptions.location];
+    [self.kipiBrowserViewController showToolBar:browserOptions.toolbar :browserOptions.toolbarposition];
     if (browserOptions.closebuttoncaption != nil || browserOptions.closebuttoncolor != nil) {
         int closeButtonIndex = browserOptions.lefttoright ? (browserOptions.hidenavigationbuttons ? 1 : 4) : 0;
-        [self.inAppBrowserViewController setCloseButtonTitle:browserOptions.closebuttoncaption :browserOptions.closebuttoncolor :closeButtonIndex];
+        [self.kipiBrowserViewController setCloseButtonTitle:browserOptions.closebuttoncaption :browserOptions.closebuttoncolor :closeButtonIndex];
     }
     // Set Presentation Style
     UIModalPresentationStyle presentationStyle = UIModalPresentationFullScreen; // default
@@ -175,7 +175,7 @@ static CDVWKKipiBrowser* instance = nil;
             presentationStyle = UIModalPresentationFormSheet;
         }
     }
-    self.inAppBrowserViewController.modalPresentationStyle = presentationStyle;
+    self.kipiBrowserViewController.modalPresentationStyle = presentationStyle;
 
     // Set Transition Style
     UIModalTransitionStyle transitionStyle = UIModalTransitionStyleCoverVertical; // default
@@ -186,14 +186,14 @@ static CDVWKKipiBrowser* instance = nil;
             transitionStyle = UIModalTransitionStyleCrossDissolve;
         }
     }
-    self.inAppBrowserViewController.modalTransitionStyle = transitionStyle;
+    self.kipiBrowserViewController.modalTransitionStyle = transitionStyle;
 
     //prevent webView from bouncing
     if (browserOptions.disallowoverscroll) {
-        if ([self.inAppBrowserViewController.webView respondsToSelector:@selector(scrollView)]) {
-            ((UIScrollView*)[self.inAppBrowserViewController.webView scrollView]).bounces = NO;
+        if ([self.kipiBrowserViewController.webView respondsToSelector:@selector(scrollView)]) {
+            ((UIScrollView*)[self.kipiBrowserViewController.webView scrollView]).bounces = NO;
         } else {
-            for (id subview in self.inAppBrowserViewController.webView.subviews) {
+            for (id subview in self.kipiBrowserViewController.webView.subviews) {
                 if ([[subview class] isSubclassOfClass:[UIScrollView class]]) {
                     ((UIScrollView*)subview).bounces = NO;
                 }
@@ -209,7 +209,7 @@ static CDVWKKipiBrowser* instance = nil;
     }
     _waitForBeforeload = ![_beforeload isEqualToString:@""];
 
-    [self.inAppBrowserViewController navigateTo:url];
+    [self.kipiBrowserViewController navigateTo:url];
     if (!browserOptions.hidden) {
         [self show:nil withNoAnimate:browserOptions.hidden];
     }
@@ -226,23 +226,23 @@ static CDVWKKipiBrowser* instance = nil;
         initHidden = YES;
     }
 
-    if (self.inAppBrowserViewController == nil) {
+    if (self.kipiBrowserViewController == nil) {
         NSLog(@"Tried to show IAB after it was closed.");
         return;
     }
 
     __block CDVKipiBrowserNavigationController* nav = [[CDVKipiBrowserNavigationController alloc]
-                                                        initWithRootViewController:self.inAppBrowserViewController];
-    nav.orientationDelegate = self.inAppBrowserViewController;
+                                                        initWithRootViewController:self.kipiBrowserViewController];
+    nav.orientationDelegate = self.kipiBrowserViewController;
     nav.navigationBarHidden = YES;
-    nav.modalPresentationStyle = self.inAppBrowserViewController.modalPresentationStyle;
-    nav.presentationController.delegate = self.inAppBrowserViewController;
+    nav.modalPresentationStyle = self.kipiBrowserViewController.modalPresentationStyle;
+    nav.presentationController.delegate = self.kipiBrowserViewController;
 
     __weak CDVWKKipiBrowser* weakSelf = self;
 
     // Run later to avoid the "took a long time" log message.
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (weakSelf.inAppBrowserViewController != nil) {
+        if (weakSelf.kipiBrowserViewController != nil) {
             float osVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
             __strong __typeof(weakSelf) strongSelf = weakSelf;
             if (!strongSelf->tmpWindow) {
@@ -271,7 +271,7 @@ static CDVWKKipiBrowser* instance = nil;
     self->tmpWindow.hidden = YES;
     self->tmpWindow = nil;
 
-    if (self.inAppBrowserViewController == nil) {
+    if (self.kipiBrowserViewController == nil) {
         NSLog(@"Tried to hide IAB after it was closed.");
         return;
 
@@ -280,8 +280,8 @@ static CDVWKKipiBrowser* instance = nil;
 
     // Run later to avoid the "took a long time" log message.
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (self.inAppBrowserViewController != nil) {
-            [self.inAppBrowserViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        if (self.kipiBrowserViewController != nil) {
+            [self.kipiBrowserViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         }
     });
 }
@@ -310,7 +310,7 @@ static CDVWKKipiBrowser* instance = nil;
     if ([_beforeload isEqualToString:@""]) {
         NSLog(@"unexpected loadAfterBeforeload called without feature beforeload=get|post");
     }
-    if (self.inAppBrowserViewController == nil) {
+    if (self.kipiBrowserViewController == nil) {
         NSLog(@"Tried to invoke loadAfterBeforeload on IAB after it was closed.");
         return;
     }
@@ -322,7 +322,7 @@ static CDVWKKipiBrowser* instance = nil;
     NSURL* url = [NSURL URLWithString:urlStr];
     //_beforeload = @"";
     _waitForBeforeload = NO;
-    [self.inAppBrowserViewController navigateTo:url];
+    [self.kipiBrowserViewController navigateTo:url];
 }
 
 // This is a helper method for the inject{Script|Style}{Code|File} API calls, which
@@ -356,7 +356,7 @@ static CDVWKKipiBrowser* instance = nil;
 //Synchronus helper for javascript evaluation
 - (void)evaluateJavaScript:(NSString *)script {
     __block NSString* _script = script;
-    [self.inAppBrowserViewController.webView evaluateJavaScript:script completionHandler:^(id result, NSError *error) {
+    [self.kipiBrowserViewController.webView evaluateJavaScript:script completionHandler:^(id result, NSError *error) {
         if (error == nil) {
             if (result != nil) {
                 NSLog(@"%@", result);
@@ -552,7 +552,7 @@ static CDVWKKipiBrowser* instance = nil;
 - (void)didStartProvisionalNavigation:(WKWebView*)theWebView
 {
     NSLog(@"didStartProvisionalNavigation");
-//    self.inAppBrowserViewController.currentURL = theWebView.URL;
+//    self.kipiBrowserViewController.currentURL = theWebView.URL;
 }
 
 - (void)didFinishNavigation:(WKWebView*)theWebView
@@ -560,8 +560,8 @@ static CDVWKKipiBrowser* instance = nil;
     if (self.callbackId != nil) {
         NSString* url = [theWebView.URL absoluteString];
         if(url == nil){
-            if(self.inAppBrowserViewController.currentURL != nil){
-                url = [self.inAppBrowserViewController.currentURL absoluteString];
+            if(self.kipiBrowserViewController.currentURL != nil){
+                url = [self.kipiBrowserViewController.currentURL absoluteString];
             }else{
                 url = @"";
             }
@@ -579,8 +579,8 @@ static CDVWKKipiBrowser* instance = nil;
     if (self.callbackId != nil) {
         NSString* url = [theWebView.URL absoluteString];
         if(url == nil){
-            if(self.inAppBrowserViewController.currentURL != nil){
-                url = [self.inAppBrowserViewController.currentURL absoluteString];
+            if(self.kipiBrowserViewController.currentURL != nil){
+                url = [self.kipiBrowserViewController.currentURL absoluteString];
             }else{
                 url = @"";
             }
@@ -602,18 +602,18 @@ static CDVWKKipiBrowser* instance = nil;
         self.callbackId = nil;
     }
 
-    [self.inAppBrowserViewController.configuration.userContentController removeScriptMessageHandlerForName:IAB_BRIDGE_NAME];
-    self.inAppBrowserViewController.configuration = nil;
+    [self.kipiBrowserViewController.configuration.userContentController removeScriptMessageHandlerForName:IAB_BRIDGE_NAME];
+    self.kipiBrowserViewController.configuration = nil;
 
-    [self.inAppBrowserViewController.webView stopLoading];
-    [self.inAppBrowserViewController.webView removeFromSuperview];
-    [self.inAppBrowserViewController.webView setUIDelegate:nil];
-    [self.inAppBrowserViewController.webView setNavigationDelegate:nil];
-    self.inAppBrowserViewController.webView = nil;
+    [self.kipiBrowserViewController.webView stopLoading];
+    [self.kipiBrowserViewController.webView removeFromSuperview];
+    [self.kipiBrowserViewController.webView setUIDelegate:nil];
+    [self.kipiBrowserViewController.webView setNavigationDelegate:nil];
+    self.kipiBrowserViewController.webView = nil;
 
     // Set navigationDelegate to nil to ensure no callbacks are received from it.
-    self.inAppBrowserViewController.navigationDelegate = nil;
-    self.inAppBrowserViewController = nil;
+    self.kipiBrowserViewController.navigationDelegate = nil;
+    self.kipiBrowserViewController = nil;
 
     // Set tmpWindow to hidden to make main webview responsive to touch again
     // Based on https://stackoverflow.com/questions/4544489/how-to-remove-a-uiwindow

@@ -207,7 +207,7 @@
 * [CB-12184](https://issues.apache.org/jira/browse/CB-12184) executeScript leads to a null pointer on exception on Android.
 * fix(close button): Set correct content description
 * [CB-9274](https://issues.apache.org/jira/browse/CB-9274) Adds missing methods to KipiBrowser to allow compilation for Amazon FireOS.
-* [CB-10973](https://issues.apache.org/jira/browse/CB-10973) inAppBrowser for Windows Platform: wrong height of webview with location=yes
+* [CB-10973](https://issues.apache.org/jira/browse/CB-10973) kipiBrowser for Windows Platform: wrong height of webview with location=yes
 * Increment plugin minor version because of new hide feature
 * removed duplicate hide method in ios source and add jasmine test cases
 * [CB-8467](https://issues.apache.org/jira/browse/CB-8467)
@@ -223,7 +223,7 @@
 * [CB-12184](https://issues.apache.org/jira/browse/CB-12184) executeScript leads to a null pointer on exception on Android.
 * fix(close button): Set correct content description
 * [CB-9274](https://issues.apache.org/jira/browse/CB-9274) Adds missing methods to KipiBrowser to allow compilation for Amazon FireOS.
-* [CB-10973](https://issues.apache.org/jira/browse/CB-10973) inAppBrowser for Windows Platform: wrong height of webview with location=yes
+* [CB-10973](https://issues.apache.org/jira/browse/CB-10973) kipiBrowser for Windows Platform: wrong height of webview with location=yes
 * Increment plugin minor version because of new hide feature
 * removed duplicate hide method in ios source and add jasmine test cases
 * [CB-8467](https://issues.apache.org/jira/browse/CB-8467)
@@ -239,9 +239,9 @@
 * Add intent scheme to be handled by OS
 * Plugin uses Android Log class and not Cordova LOG class
 * Adding links to guide content and reference content at the top of the readme file Github: close #163
-* [CB-10973](https://issues.apache.org/jira/browse/CB-10973) inAppBrowser for Browser Platform: wrong height of webview with location=yes
+* [CB-10973](https://issues.apache.org/jira/browse/CB-10973) kipiBrowser for Browser Platform: wrong height of webview with location=yes
 * Size and position in browser platform
-* [CB-10973](https://issues.apache.org/jira/browse/CB-10973) inAppBrowser for Windows Platform: wrong height of webview with location=yes
+* [CB-10973](https://issues.apache.org/jira/browse/CB-10973) kipiBrowser for Windows Platform: wrong height of webview with location=yes
 * [CB-11013](https://issues.apache.org/jira/browse/CB-11013) IAB enabling background play of YouTube videos?
 * [CB-10467](https://issues.apache.org/jira/browse/CB-10467) Hardware back button, while KipiBrowser is opened, closes the app too in addition to closing KipiBrowser
 * [CB-11178](https://issues.apache.org/jira/browse/CB-11178) allow to open other apps on iOS 9
@@ -275,7 +275,7 @@
 * chore: edit package.json license to match SPDX id
 * [CB-10305](https://issues.apache.org/jira/browse/CB-10305) Gray bar appears in the wrong place on iOS
 * [CB-7786](https://issues.apache.org/jira/browse/CB-7786) Support mediaPlaybackRequiresUserAction on Android
-* [CB-7500](https://issues.apache.org/jira/browse/CB-7500) executeScript with callback kills/blurs inAppBrowser window on Android
+* [CB-7500](https://issues.apache.org/jira/browse/CB-7500) executeScript with callback kills/blurs kipiBrowser window on Android
 * [CB-10505](https://issues.apache.org/jira/browse/CB-10505) Incremented plugin version.
 * [CB-10505](https://issues.apache.org/jira/browse/CB-10505) Updated version and RELEASENOTES.md for release 1.2.1
 * handle app store urls in system browser
@@ -284,7 +284,7 @@
 * [CB-6702](https://issues.apache.org/jira/browse/CB-6702) KipiBrowser hangs when opening more than one instance
 * [CB-10456](https://issues.apache.org/jira/browse/CB-10456) KipiBrowser is not closed if I close it programmatically on Android
 * [CB-10441](https://issues.apache.org/jira/browse/CB-10441) Add auto tests for KipiBrowser plugin
-* [CB-10428](https://issues.apache.org/jira/browse/CB-10428) Fix syntax error when browserifying inAppBrowser plugin
+* [CB-10428](https://issues.apache.org/jira/browse/CB-10428) Fix syntax error when browserifying kipiBrowser plugin
 * [CB-10407](https://issues.apache.org/jira/browse/CB-10407) Re-adding onPageStarted to re-add LOAD_START, even though it's in the wrong place
 * [CB-10368](https://issues.apache.org/jira/browse/CB-10368) Incremented plugin version.
 * [CB-10368](https://issues.apache.org/jira/browse/CB-10368) Updated version and RELEASENOTES.md for release 1.2.0
@@ -430,7 +430,7 @@
 * doc updated
 * console.log removed
 * back/forward buttons added, iframe has no border
-* not forcing the look of the inAppBrowserWrap and buttons
+* not forcing the look of the kipiBrowserWrap and buttons
 * Adding permission info
 * [CB-6806](https://issues.apache.org/jira/browse/CB-6806) Add license
 * documentation translation: cordova-plugin-kipibrowser
@@ -486,7 +486,7 @@
 * add ubuntu platform
 * Adding CC-A-2.5 Notice for Assets, modifying plugins to use resources
 * Adding the buttons
-* Adding drawables to the inAppBrowser.  This doesn't look quite right, but it's a HUGE improvement over the previous settings
+* Adding drawables to the kipiBrowser.  This doesn't look quite right, but it's a HUGE improvement over the previous settings
 * [CB-5756](https://issues.apache.org/jira/browse/CB-5756) Add missing import
 * [CB-5756](https://issues.apache.org/jira/browse/CB-5756) Android: Use WebView.evaluateJavascript for script injection on Android 4.4+
 * Delete stale test/ directory
@@ -591,11 +591,11 @@
 * Edit package.json license to match SPDX id
 * [CB-10305](https://issues.apache.org/jira/browse/CB-10305) Gray bar appears in the wrong place on iOS
 * [CB-7786](https://issues.apache.org/jira/browse/CB-7786) Support mediaPlaybackRequiresUserAction on Android
-* [CB-7500](https://issues.apache.org/jira/browse/CB-7500) executeScript with callback kills/blurs inAppBrowser window on Android
+* [CB-7500](https://issues.apache.org/jira/browse/CB-7500) executeScript with callback kills/blurs kipiBrowser window on Android
 
 ### 1.2.1 (Feb 02, 2016)
 * [CB-10407](https://issues.apache.org/jira/browse/CB-10407) KipiBrowser not firing loadstart event on android
-* [CB-10428](https://issues.apache.org/jira/browse/CB-10428) Fix syntax error when browserifying inAppBrowser plugin
+* [CB-10428](https://issues.apache.org/jira/browse/CB-10428) Fix syntax error when browserifying kipiBrowser plugin
 * handle app store urls in system browser
 * [CB-6702](https://issues.apache.org/jira/browse/CB-6702) KipiBrowser hangs when opening more than one instance
 * [CB-10456](https://issues.apache.org/jira/browse/CB-10456) KipiBrowser is not closed if I close it programmatically on Android
@@ -759,7 +759,7 @@
 * [CB-5756](https://issues.apache.org/jira/browse/CB-5756): Android: Use WebView.evaluateJavascript for script injection on Android 4.4+
 * Didn't test on ICS or lower, getDrawable isn't supported until Jellybean
 * add ubuntu platform
-* Adding drawables to the inAppBrowser.  This doesn't look quite right, but it's a HUGE improvement over the previous settings
+* Adding drawables to the kipiBrowser.  This doesn't look quite right, but it's a HUGE improvement over the previous settings
 * [CB-5756](https://issues.apache.org/jira/browse/CB-5756): Android: Use WebView.evaluateJavascript for script injection on Android 4.4+
 * Remove alive from KipiBrowser.js since it didn't catch the case where the browser is closed by the user.
 * [CB-5733](https://issues.apache.org/jira/browse/CB-5733) Fix IAB.close() not working if called before show() animation is done

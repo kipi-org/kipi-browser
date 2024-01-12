@@ -35,7 +35,7 @@
 }
 
 @property (nonatomic, retain) CDVWKKipiBrowser* instance;
-@property (nonatomic, retain) CDVWKKipiBrowserViewController* inAppBrowserViewController;
+@property (nonatomic, retain) CDVWKKipiBrowserViewController* kipiBrowserViewController;
 @property (nonatomic, copy) NSString* callbackId;
 @property (nonatomic, copy) NSRegularExpression *callbackIdPattern;
 

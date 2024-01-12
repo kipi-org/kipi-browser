@@ -221,7 +221,7 @@ The object returned from a call to `cordova.KipiBrowser.open` when the target is
 
 ```javascript
 
-var inAppBrowserRef;
+var kipiBrowserRef;
 
 function showHelp(url) {
 
@@ -229,17 +229,17 @@ function showHelp(url) {
 
     var options = "location=yes,hidden=yes,beforeload=yes";
 
-    inAppBrowserRef = cordova.KipiBrowser.open(url, target, options);
+    kipiBrowserRef = cordova.KipiBrowser.open(url, target, options);
 
-    inAppBrowserRef.addEventListener('loadstart', loadStartCallBack);
+    kipiBrowserRef.addEventListener('loadstart', loadStartCallBack);
 
-    inAppBrowserRef.addEventListener('loadstop', loadStopCallBack);
+    kipiBrowserRef.addEventListener('loadstop', loadStopCallBack);
 
-    inAppBrowserRef.addEventListener('loaderror', loadErrorCallBack);
+    kipiBrowserRef.addEventListener('loaderror', loadErrorCallBack);
 
-    inAppBrowserRef.addEventListener('beforeload', beforeloadCallBack);
+    kipiBrowserRef.addEventListener('beforeload', beforeloadCallBack);
 
-    inAppBrowserRef.addEventListener('message', messageCallBack);
+    kipiBrowserRef.addEventListener('message', messageCallBack);
 }
 
 function loadStartCallBack() {
@@ -250,11 +250,11 @@ function loadStartCallBack() {
 
 function loadStopCallBack() {
 
-    if (inAppBrowserRef != undefined) {
+    if (kipiBrowserRef != undefined) {
 
-        inAppBrowserRef.insertCSS({ code: "body{font-size: 25px;}" });
+        kipiBrowserRef.insertCSS({ code: "body{font-size: 25px;}" });
 
-        inAppBrowserRef.executeScript({ code: "\
+        kipiBrowserRef.executeScript({ code: "\
             var message = 'this is the message';\
             var messageObj = {my_message: message};\
             var stringifiedMessageObj = JSON.stringify(messageObj);\
@@ -263,7 +263,7 @@ function loadStopCallBack() {
 
         $('#status-message').text("");
 
-        inAppBrowserRef.show();
+        kipiBrowserRef.show();
     }
 
 }
@@ -276,11 +276,11 @@ function loadErrorCallBack(params) {
        "alert('Sorry we cannot open that page. Message from the server is : "
        + params.message + "');"
 
-    inAppBrowserRef.executeScript({ code: scriptErrorMesssage }, executeScriptCallBack);
+    kipiBrowserRef.executeScript({ code: scriptErrorMesssage }, executeScriptCallBack);
 
-    inAppBrowserRef.close();
+    kipiBrowserRef.close();
 
-    inAppBrowserRef = undefined;
+    kipiBrowserRef = undefined;
 
 }
 
@@ -299,7 +299,7 @@ function beforeloadCallBack(params, callback) {
 
     if (params.url.startsWith("http://www.example.com/")) {
 
-        // Load this URL in the inAppBrowser.
+        // Load this URL in the kipiBrowser.
         callback(params.url);
     } else {
 
@@ -567,7 +567,7 @@ $('#help-select').on('change', function (e) {
             break;
 
         case "search":
-            url = "https://www.google.com/#q=inAppBrowser+plugin";
+            url = "https://www.google.com/#q=kipiBrowser+plugin";
             break;
     }
 
@@ -589,13 +589,13 @@ function showHelp(url) {
 
     var options = "location=yes,hidden=yes";
 
-    inAppBrowserRef = cordova.KipiBrowser.open(url, target, options);
+    kipiBrowserRef = cordova.KipiBrowser.open(url, target, options);
 
-    inAppBrowserRef.addEventListener('loadstart', loadStartCallBack);
+    kipiBrowserRef.addEventListener('loadstart', loadStartCallBack);
 
-    inAppBrowserRef.addEventListener('loadstop', loadStopCallBack);
+    kipiBrowserRef.addEventListener('loadstop', loadStopCallBack);
 
-    inAppBrowserRef.addEventListener('loaderror', loadErrorCallBack);
+    kipiBrowserRef.addEventListener('loaderror', loadErrorCallBack);
 
 }
 
@@ -623,13 +623,13 @@ When the ``loadstopcallback`` event is raised, we know that the content has load
 
 function loadStopCallBack() {
 
-    if (inAppBrowserRef != undefined) {
+    if (kipiBrowserRef != undefined) {
 
-        inAppBrowserRef.insertCSS({ code: "body{font-size: 25px;}" });
+        kipiBrowserRef.insertCSS({ code: "body{font-size: 25px;}" });
 
         $('#status-message').text("");
 
-        inAppBrowserRef.show();
+        kipiBrowserRef.show();
     }
 
 }
@@ -653,11 +653,11 @@ function loadErrorCallBack(params) {
        "alert('Sorry we cannot open that page. Message from the server is : "
        + params.message + "');"
 
-    inAppBrowserRef.executeScript({ code: scriptErrorMesssage }, executeScriptCallBack);
+    kipiBrowserRef.executeScript({ code: scriptErrorMesssage }, executeScriptCallBack);
 
-    inAppBrowserRef.close();
+    kipiBrowserRef.close();
 
-    inAppBrowserRef = undefined;
+    kipiBrowserRef = undefined;
 
 }
 

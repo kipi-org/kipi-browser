@@ -30,7 +30,7 @@ import org.json.JSONObject;
  */
 public class KipiBrowserDialog extends Dialog {
     Context context;
-    KipiBrowser inAppBrowser = null;
+    KipiBrowser kipiBrowser = null;
 
     public KipiBrowserDialog(Context context, int theme) {
         super(context, theme);
@@ -38,19 +38,19 @@ public class KipiBrowserDialog extends Dialog {
     }
 
     public void setInAppBroswer(KipiBrowser browser) {
-        this.inAppBrowser = browser;
+        this.kipiBrowser = browser;
     }
 
     public void onBackPressed () {
-        if (this.inAppBrowser == null) {
+        if (this.kipiBrowser == null) {
             this.dismiss();
         } else {
-            // better to go through the in inAppBrowser
+            // better to go through the in kipiBrowser
             // because it does a clean up
-            if (this.inAppBrowser.hardwareBack() && this.inAppBrowser.canGoBack()) {
-                this.inAppBrowser.goBack();
+            if (this.kipiBrowser.hardwareBack() && this.kipiBrowser.canGoBack()) {
+                this.kipiBrowser.goBack();
             }  else {
-                this.inAppBrowser.closeDialog();
+                this.kipiBrowser.closeDialog();
             }
         }
     }
