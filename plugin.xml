@@ -20,14 +20,14 @@
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
            id="cordova-plugin-kipibrowser"
-      version="6.0.1-dev">
+      version="1.0.8">
 
     <name>KipiBrowser</name>
     <description>Cordova KipiBrowser Plugin</description>
     <license>Apache 2.0</license>
     <keywords>cordova,in,app,browser,kipibrowser</keywords>
-    <repo>https://github.com/apache/cordova-plugin-kipibrowser</repo>
-    <issue>https://github.com/apache/cordova-plugin-kipibrowser/issues</issue>
+    <repo>https://github.com/kipi-org/kipi-browser</repo>
+    <issue>https://github.com/kipi-org/kipi-browser/issues</issue>
 
     <engines>
         <engine name="cordova" version=">=9.0.0"/>

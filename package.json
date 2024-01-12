@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-kipibrowser",
-  "version": "6.0.1-dev",
+  "version": "1.0.8",
   "description": "Cordova KipiBrowser Plugin",
   "types": "./types/index.d.ts",
   "cordova": {
@@ -41,7 +41,7 @@
         "cordova-ios": ">=6.0.0",
         "cordova": ">=9.0.0"
       },
-      "6.0.1-dev": {
+      "1.0.8": {
         "cordova-android": ">=10.0.0",
         "cordova-ios": ">=6.0.0",
         "cordova": ">=9.0.0"
