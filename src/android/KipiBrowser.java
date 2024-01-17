@@ -341,8 +341,9 @@ public class KipiBrowser extends CordovaPlugin {
             this.callbackContext.sendPluginResult(pluginResult);
         }
         else if (action.equals("dispatchKeyEvent")) {
-            Log.v("TAG", "DISPATCH OK!");
-            return "ok";
+            this.inAppWebView.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, args.getInt(0)));
+            this.inAppWebView.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, args.getInt(0)));
+            return true;
         }
         else {
             return false;
